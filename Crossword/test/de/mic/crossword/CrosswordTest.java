@@ -8,15 +8,24 @@ import org.junit.Test;
 
 public class CrosswordTest {
 
+	/**
+	 * Dieser Test erstellt das Rätsel aus dem Bilder-Ordner
+	 * 
+	 * @throws Exception
+	 */
 	@Test
-	public void erstelleRaetsel() throws Exception {
+	public void erstelleTestRaetsel() throws Exception {
 
-		List<Zelle> alle = new ArrayList<>();
+		Raetsel r = new Raetsel();
+		List<Zelle> alleZellen = new ArrayList<>();
 		for (int i = 0; i < 25; i++) {
 			for (int j = 0; j < 25; j++) {
-				alle.add(new Zelle(new Point(i, j)));
+				alleZellen.add(new Zelle(new Point(i, j)));
 			}
 		}
+		r.addAll(alleZellen);
+		// Fragen hinzufügen
+		r.getZelle(0, 0).addEigenschaft(Zelltyp.FRAGE);
 
 	}
 }
