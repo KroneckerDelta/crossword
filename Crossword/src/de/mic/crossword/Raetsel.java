@@ -40,4 +40,13 @@ public class Raetsel {
 		return null;
 	}
 
+	/**
+	 * Liefert alle Zellen im Original zurück.
+	 * 
+	 * @return zellen
+	 */
+	public List<Zelle> getAlleZellen() {
+		return alleZellen;
+	}
+
 }
