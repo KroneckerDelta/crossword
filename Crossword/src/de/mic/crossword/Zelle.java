@@ -17,6 +17,7 @@ public class Zelle {
 	private Point position;
 	private int stelle;
 	private List<Zelltyp> eigenschaften = new ArrayList<>();
+	private List<Frage> fragen = new ArrayList<>();
 
 	public Zelle(Point position) {
 		this.position = position;
@@ -43,6 +44,8 @@ public class Zelle {
 
 	/**
 	 * Prüft, ob die Zelle die geforderte Eigenschaft hat.
+	 * 
+	 * @return true, wenn die Eigenschaft vorhanden ist.
 	 */
 	public boolean hatEigenschaft(Zelltyp typ) {
 		return eigenschaften.contains(typ);
@@ -55,5 +58,14 @@ public class Zelle {
 	 */
 	public int getStelle() {
 		return stelle;
+	}
+
+	/**
+	 * Fügt eine Frage hinzu.
+	 * 
+	 * @param frage
+	 */
+	public void addFrage(Frage frage) {
+		fragen.add(frage);
 	}
 }

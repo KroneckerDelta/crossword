@@ -37,8 +37,23 @@ public class CrosswordTest {
 
 		erstelleDieGewinnerZellen(r);
 
+		fuegeEchteFragenHinzu(r);
+
 		checkRaetsel(r);
 
+	}
+
+	private void fuegeEchteFragenHinzu(Raetsel r) {
+
+		Zelle zelle = r.getZelle(0, 0);
+		Frage f1 = new Frage("die Ackerkrume lockern");
+		Zelle z1 = r.getZelle(0, 1);
+		Zelle z2 = r.getZelle(1, 1);
+		Zelle z3 = r.getZelle(2, 1);
+		Zelle z4 = r.getZelle(3, 1);
+		Zelle z5 = r.getZelle(4, 1);
+		f1.addZellen(z1, z2, z3, z4, z5);
+		zelle.addFrage(f1);
 	}
 
 	private void erstelleDieGewinnerZellen(Raetsel r) {
