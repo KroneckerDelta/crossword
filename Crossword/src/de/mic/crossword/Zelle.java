@@ -15,12 +15,12 @@ import java.util.List;
 public class Zelle {
 
 	private Point position;
+	private int stelle;
+	private List<Zelltyp> eigenschaften = new ArrayList<>();
 
 	public Zelle(Point position) {
 		this.position = position;
 	}
-
-	private List<Zelltyp> eigenschaften = new ArrayList<>();
 
 	public boolean isPosition(int x, int y) {
 		return position.x == x && position.y == y;
@@ -31,4 +31,29 @@ public class Zelle {
 
 	}
 
+	/**
+	 * Fügt dieser Zelle die Eigenschaft GEWINNFELD hinzu mit der Position.
+	 * 
+	 * @param stelle
+	 */
+	public void addGewinnfeld(int stelle) {
+		this.stelle = stelle;
+		addEigenschaft(Zelltyp.GEWINNFELD);
+	}
+
+	/**
+	 * Prüft, ob die Zelle die geforderte Eigenschaft hat.
+	 */
+	public boolean hatEigenschaft(Zelltyp typ) {
+		return eigenschaften.contains(typ);
+	}
+
+	/**
+	 * Liefert die Stelle zurück. Geht nur bei Gewinnderfeldern
+	 * 
+	 * @return 0 oder die Stelle
+	 */
+	public int getStelle() {
+		return stelle;
+	}
 }

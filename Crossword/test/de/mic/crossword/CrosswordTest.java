@@ -1,6 +1,7 @@
 package de.mic.crossword;
 
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 
 import java.awt.Point;
 import java.util.ArrayList;
@@ -32,6 +33,33 @@ public class CrosswordTest {
 		}
 		r.addAll(alleZellen);
 		// Fragen hinzufügen
+		erstelleDieFragen(r);
+
+		erstelleDieGewinnerZellen(r);
+
+		checkRaetsel(r);
+
+	}
+
+	private void erstelleDieGewinnerZellen(Raetsel r) {
+		erstelleGewinnerZelle(r, 1, 6, 8);
+		erstelleGewinnerZelle(r, 2, 10, 9);
+		erstelleGewinnerZelle(r, 4, 7, 7);
+		erstelleGewinnerZelle(r, 5, 9, 1);
+		erstelleGewinnerZelle(r, 7, 1, 2);
+		erstelleGewinnerZelle(r, 8, 6, 3);
+		erstelleGewinnerZelle(r, 9, 10, 4);
+		erstelleGewinnerZelle(r, 10, 7, 6);
+		erstelleGewinnerZelle(r, 12, 5, 5);
+
+	}
+
+	private void erstelleGewinnerZelle(Raetsel r, int x, int y, int stelle) {
+		r.getZelle(x, y).addGewinnfeld(stelle);
+
+	}
+
+	private void erstelleDieFragen(Raetsel r) {
 		erstelleFrageProReihe(0, r, 0, 2, 4, 5, 7, 9, 11, 12);
 		erstelleFrageProReihe(1, r, 0, 8);
 		erstelleFrageProReihe(2, r, 0, 2, 5, 11);
@@ -45,9 +73,6 @@ public class CrosswordTest {
 		erstelleFrageProReihe(10, r, 4, 10);
 		erstelleFrageProReihe(11, r, 0, 3, 8);
 		erstelleFrageProReihe(12, r, 0, 6);
-
-		checkRaetsel(r);
-
 	}
 
 	private void checkRaetsel(Raetsel r) {
@@ -58,6 +83,17 @@ public class CrosswordTest {
 				assertNotNull(r.getZelle(x, y));
 			}
 		}
+
+		assertNotNull(r.getGewinnerfeld(1));
+		assertNotNull(r.getGewinnerfeld(2));
+		assertNotNull(r.getGewinnerfeld(3));
+		assertNotNull(r.getGewinnerfeld(4));
+		assertNotNull(r.getGewinnerfeld(5));
+		assertNotNull(r.getGewinnerfeld(6));
+		assertNotNull(r.getGewinnerfeld(7));
+		assertNotNull(r.getGewinnerfeld(8));
+		assertNotNull(r.getGewinnerfeld(9));
+		assertNull(r.getGewinnerfeld(10));
 
 	}
 

@@ -49,4 +49,20 @@ public class Raetsel {
 		return alleZellen;
 	}
 
+	/**
+	 * Liefert das Gewinnerfeld für die Stelle zurück
+	 * 
+	 * @param i
+	 */
+	public Zelle getGewinnerfeld(int stelle) {
+		for (Zelle zelle : alleZellen) {
+			if (zelle.hatEigenschaft(Zelltyp.GEWINNFELD)) {
+				if (zelle.getStelle() == stelle) {
+					return zelle;
+				}
+			}
+		}
+		return null;
+	}
+
 }
