@@ -93,18 +93,10 @@ public class CrosswordTest {
 
 	private void fuegeEchteFragenHinzu(Raetsel r) {
 
-		Zelle zelle = r.getZelle(0, 0);
 		Frage f1 = new Frage("die Ackerkrume lockern");
-		Zelle z1 = r.getZelle(1, 0);
-		Zelle z2 = r.getZelle(1, 1);
-		Zelle z3 = r.getZelle(1, 2);
-		Zelle z4 = r.getZelle(1, 3);
-		Zelle z5 = r.getZelle(1, 4);
 
-		List<Zelle> zellen = r.getZellen(5, de.mic.crossword.Raetsel.Richtung.SENKRECHT, 1, 0);
-
-		f1.addZellen(z1, z2, z3, z4, z5);
-		zelle.addFrage(f1);
+		f1.addZellen(r.getZellen(5, de.mic.crossword.Raetsel.Richtung.SENKRECHT, 1, 0));
+		r.getZelle(0, 0).addFrage(f1);
 
 		Frage f2 = new Frage("Westafrikaner");
 		Zelle zelle2 = r.getZelle(1, 1);

@@ -13,7 +13,6 @@ public class Frage {
 		this.frage = frage;
 	}
 
-
 	/**
 	 * FÃ¼gt die Zellen hinzu, die fÃ¼r die LÃ¶sung sind
 	 * 
@@ -28,12 +27,17 @@ public class Frage {
 		listeDerZellen.stream().forEach(z -> loesungsZellen.add(z));
 	}
 
+	public void addZellen(List<Zelle> zellen) {
+		addZellen((Zelle[]) zellen.toArray());
+	}
+
 	/**
 	 * Liefert die Lösungszellen zurück.
+	 * 
 	 * @return zellen für die Buchstaben.
 	 */
 	public List<Zelle> getZellen() {
 		return loesungsZellen;
 	}
-	
+
 }
