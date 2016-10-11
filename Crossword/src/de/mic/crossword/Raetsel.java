@@ -1,5 +1,6 @@
 package de.mic.crossword;
 
+import java.awt.Point;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -45,6 +46,17 @@ public class Raetsel {
 
 		}
 		return null;
+	}
+
+	/**
+	 * Liefert die Zelle
+	 * 
+	 * @param punkt
+	 *            - Koordinate
+	 * @return Zelle
+	 */
+	public Zelle getZelle(Point punkt) {
+		return getZelle(punkt.x, punkt.y);
 	}
 
 	/**
@@ -99,6 +111,18 @@ public class Raetsel {
 			}
 		}
 		return result;
+	}
+
+	/**
+	 * Liefert die Anzahl der Zellen zurück.
+	 * 
+	 * @param anzahl
+	 * @param richtung
+	 * @param punkt
+	 * @return zellen
+	 */
+	public List<Zelle> getZellen(int anzahl, Richtung richtung, Point punkt) {
+		return getZellen(anzahl, richtung, punkt.x, punkt.y);
 	}
 
 }

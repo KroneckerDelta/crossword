@@ -23,12 +23,12 @@ public class Frage {
 	 * @param z5
 	 */
 	public void addZellen(Zelle... zellen) {
-		List<Zelle> listeDerZellen = Arrays.asList(zellen);
-		listeDerZellen.stream().forEach(z -> loesungsZellen.add(z));
+		addZellen(Arrays.asList(zellen));
+
 	}
 
 	public void addZellen(List<Zelle> zellen) {
-		addZellen((Zelle[]) zellen.toArray());
+		zellen.stream().forEach(z -> loesungsZellen.add(z));
 	}
 
 	/**

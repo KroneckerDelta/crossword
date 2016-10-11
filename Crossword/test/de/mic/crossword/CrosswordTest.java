@@ -95,13 +95,17 @@ public class CrosswordTest {
 
 		Frage f1 = new Frage("die Ackerkrume lockern");
 
-		f1.addZellen(r.getZellen(5, de.mic.crossword.Raetsel.Richtung.SENKRECHT, 1, 0));
+		f1.addZellen(r.getZellen(5, Richtung.SENKRECHT, 1, 0));
 		r.getZelle(0, 0).addFrage(f1);
 
-		Frage f2 = new Frage("Westafrikaner");
-		f2.addZellen(r.getZellen(5, de.mic.crossword.Raetsel.Richtung.WAAGERECHT, 1, 1));
-		r.getZelle(0, 1).addFrage(f2);
+		erstelleFrage(r, "Westafrikaner", new Point(0, 1), Richtung.WAAGERECHT, new Point(1, 1), 5);
 
+	}
+
+	private void erstelleFrage(Raetsel r, String frage, Point frageXY, Richtung richtung, Point antwortXY, int anzahl) {
+		Frage f2 = new Frage(frage);
+		f2.addZellen(r.getZellen(anzahl, richtung, antwortXY));
+		r.getZelle(frageXY.x, frageXY.y).addFrage(f2);
 	}
 
 	private void erstelleDieGewinnerZellen(Raetsel r) {
