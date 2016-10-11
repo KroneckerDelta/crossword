@@ -1,7 +1,10 @@
 package de.mic.crossword;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 
 import java.awt.Point;
 import java.util.ArrayList;
@@ -9,6 +12,8 @@ import java.util.List;
 
 import org.junit.Assert;
 import org.junit.Test;
+
+import de.mic.crossword.Raetsel.Richtung;
 
 public class CrosswordTest {
 
@@ -24,6 +29,51 @@ public class CrosswordTest {
 	@Test
 	public void erstelleTestRaetsel() throws Exception {
 
+		Raetsel r = erstelleRaetsel();
+
+		checkRaetsel(r);
+
+	}
+
+	@Test
+	public void checkZellenRueckgabeSenkrecht() throws Exception {
+		Raetsel r = erstelleRaetsel();
+
+		List<Zelle> zellen = r.getZellen(2, Richtung.SENKRECHT, 2, 2);
+		Zelle z1 = zellen.get(0);
+		Zelle z2 = zellen.get(1);
+		assertTrue(z1.isPosition(2, 2));
+		assertTrue(z2.isPosition(2, 3));
+	}
+
+	@Test
+	public void checkZellenRueckgabeWaagerecht() throws Exception {
+		Raetsel r = erstelleRaetsel();
+
+		List<Zelle> zellen = r.getZellen(2, Richtung.WAAGERECHT, 2, 2);
+		Zelle z1 = zellen.get(0);
+		Zelle z2 = zellen.get(1);
+		assertTrue(z1.isPosition(2, 2));
+		assertTrue(z2.isPosition(3, 2));
+	}
+
+	@Test
+	public void checkAnzahlDerZellenRueckgabe() throws Exception {
+		Raetsel r = erstelleRaetsel();
+
+		List<Zelle> zellen = r.getZellen(2, Richtung.SENKRECHT, 2, 2);
+		assertEquals(2, zellen.size());
+	}
+
+	@Test
+	public void checkZellenRueckgabeIstNichtLeer() throws Exception {
+		Raetsel r = erstelleRaetsel();
+
+		List<Zelle> zellen = r.getZellen(2, Richtung.SENKRECHT, 2, 2);
+		assertFalse(zellen.isEmpty());
+	}
+
+	private Raetsel erstelleRaetsel() {
 		Raetsel r = new Raetsel();
 		List<Zelle> alleZellen = new ArrayList<>();
 		for (int i = 0; i < ANZAHL_SPALTEN; i++) {
@@ -38,22 +88,28 @@ public class CrosswordTest {
 		erstelleDieGewinnerZellen(r);
 
 		fuegeEchteFragenHinzu(r);
-
-		checkRaetsel(r);
-
+		return r;
 	}
 
 	private void fuegeEchteFragenHinzu(Raetsel r) {
 
 		Zelle zelle = r.getZelle(0, 0);
 		Frage f1 = new Frage("die Ackerkrume lockern");
-		Zelle z1 = r.getZelle(0, 1);
+		Zelle z1 = r.getZelle(1, 0);
 		Zelle z2 = r.getZelle(1, 1);
-		Zelle z3 = r.getZelle(2, 1);
-		Zelle z4 = r.getZelle(3, 1);
-		Zelle z5 = r.getZelle(4, 1);
+		Zelle z3 = r.getZelle(1, 2);
+		Zelle z4 = r.getZelle(1, 3);
+		Zelle z5 = r.getZelle(1, 4);
+
+		List<Zelle> zellen = r.getZellen(5, de.mic.crossword.Raetsel.Richtung.SENKRECHT, 1, 0);
+
 		f1.addZellen(z1, z2, z3, z4, z5);
 		zelle.addFrage(f1);
+
+		Frage f2 = new Frage("Westafrikaner");
+		Zelle zelle2 = r.getZelle(1, 1);
+		r.getZelle(2, 1);
+
 	}
 
 	private void erstelleDieGewinnerZellen(Raetsel r) {

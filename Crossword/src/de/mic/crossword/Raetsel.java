@@ -10,6 +10,13 @@ import java.util.List;
  *
  */
 public class Raetsel {
+	/**
+	 * Für die Ausrichtung der Zellen.
+	 *
+	 */
+	public enum Richtung {
+		SENKRECHT, WAAGERECHT;
+	}
 
 	private List<Zelle> alleZellen = new ArrayList<>();
 
@@ -63,6 +70,35 @@ public class Raetsel {
 			}
 		}
 		return null;
+	}
+
+	/**
+	 * Liefert an Anzahl der Zellen vom Startpunkt zur gwünshten Richtung
+	 * zurück.
+	 * 
+	 * @param i
+	 * @param senkrecht
+	 * @param j
+	 * @param k
+	 * @return
+	 */
+	public List<Zelle> getZellen(int anzahl, Richtung richtung, int x, int y) {
+		List<Zelle> result = new ArrayList<>();
+
+		for (int i = 0; i < anzahl; i++) {
+			result.add(getZelle(x, y));
+			switch (richtung) {
+			case SENKRECHT:
+				y++;
+				break;
+			case WAAGERECHT:
+				x++;
+				break;
+			default:
+				break;
+			}
+		}
+		return result;
 	}
 
 }
