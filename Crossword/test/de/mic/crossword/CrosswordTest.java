@@ -99,8 +99,8 @@ public class CrosswordTest {
 		r.getZelle(0, 0).addFrage(f1);
 
 		Frage f2 = new Frage("Westafrikaner");
-		Zelle zelle2 = r.getZelle(1, 1);
-		r.getZelle(2, 1);
+		f2.addZellen(r.getZellen(5, de.mic.crossword.Raetsel.Richtung.WAAGERECHT, 1, 1));
+		r.getZelle(0, 1).addFrage(f2);
 
 	}
 
