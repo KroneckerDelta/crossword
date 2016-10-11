@@ -8,6 +8,7 @@ public class Frage {
 
 	private String frage;
 	private List<Zelle> loesungsZellen = new ArrayList<>();
+	private List<String> antworten;
 
 	public Frage(String frage) {
 		this.frage = frage;
@@ -38,6 +39,33 @@ public class Frage {
 	 */
 	public List<Zelle> getZellen() {
 		return loesungsZellen;
+	}
+
+	/**
+	 * Liefert die Frage als zurück.
+	 * 
+	 * @return Frage
+	 */
+	public String getFrage() {
+		return frage;
+	}
+
+	/**
+	 * Liefert die Länger der Anworten zurüc.k
+	 * 
+	 * @return Antwortlänge
+	 */
+	public int getAntwortLaenge() {
+		return loesungsZellen.size();
+	}
+
+	/**
+	 * Setzt die Antworten an die Frage
+	 * 
+	 * @param antworten
+	 */
+	public void setAntworten(List<String> antworten) {
+		this.antworten = antworten;
 	}
 
 }

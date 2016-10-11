@@ -88,7 +88,16 @@ public class CrosswordTest {
 		erstelleDieGewinnerZellen(r);
 
 		fuegeEchteFragenHinzu(r);
+
+		fuegeAntwortenHinzu(r);
 		return r;
+	}
+
+	private void fuegeAntwortenHinzu(Raetsel r) {
+
+		RaetselAntwortenService service = new RaetselAntwortenService();
+		List<Zelle> fragen = r.getFrageZellen();
+		service.sammleAntworten(fragen);
 	}
 
 	private void fuegeEchteFragenHinzu(Raetsel r) {

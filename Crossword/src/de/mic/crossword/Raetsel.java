@@ -3,6 +3,7 @@ package de.mic.crossword;
 import java.awt.Point;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Diese Klasse beinhaltet alle Zellen des Rätsels
@@ -123,6 +124,19 @@ public class Raetsel {
 	 */
 	public List<Zelle> getZellen(int anzahl, Richtung richtung, Point punkt) {
 		return getZellen(anzahl, richtung, punkt.x, punkt.y);
+	}
+
+	/**
+	 * Liefert alle Fragen zurück
+	 * 
+	 * @return fragen
+	 */
+	public List<Zelle> getFrageZellen() {
+		return getZellen(Zelltyp.FRAGE);
+	}
+
+	private List<Zelle> getZellen(Zelltyp typ) {
+		return alleZellen.stream().filter(z -> z.hatEigenschaft(typ)).collect(Collectors.toList());
 	}
 
 }

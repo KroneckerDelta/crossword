@@ -68,4 +68,13 @@ public class Zelle {
 	public void addFrage(Frage frage) {
 		fragen.add(frage);
 	}
+
+	/**
+	 * Liefert die Fragen dieser Zelle zurück
+	 * 
+	 * @return fragen oder leere Liste
+	 */
+	public List<Frage> getFragen() {
+		return fragen;
+	}
 }
