@@ -93,12 +93,33 @@ public class CrosswordTest {
 
 	private void fuegeEchteFragenHinzu(Raetsel r) {
 
-		Frage f1 = new Frage("die Ackerkrume lockern");
+		// Erste Reihe
+		erstelleFrage(r, "die Ackerkrume lockern", new Point(0, 0), Richtung.SENKRECHT, new Point(1, 0), 5);
+		erstelleFrage(r, "Westafrikaner", new Point(0, 1), Richtung.WAAGERECHT, new Point(1, 1), 7);
+		erstelleFrage(r, "Gartengerät, Harke", xy(0, 2), Richtung.WAAGERECHT, xy(0, 2), 6);
+		erstelleFrage(r, "bibl. Stammvater (Arche)", xy(0, 4), Richtung.WAAGERECHT, xy(1, 4), 4);
+		erstelleFrage(r, "würdigen, auszeichnen (ugs.)", xy(0, 5), Richtung.WAAGERECHT, xy(0, 6), 5);
+		erstelleFrage(r, "eiweißhaltige Nutzpflanze", xy(0, 8), Richtung.WAAGERECHT, xy(0, 7), 4);
+		erstelleFrage(r, "Papstkrone", xy(0, 9), Richtung.WAAGERECHT, xy(1, 9), 5);
+		erstelleFrage(r, "Lautstärkemaß", xy(0, 10), Richtung.WAAGERECHT, xy(0, 9), 4);
+		erstelleFrage(r, "Baldriangewächs", xy(0, 11), Richtung.WAAGERECHT, xy(1, 11), 5);
 
-		f1.addZellen(r.getZellen(5, Richtung.SENKRECHT, 1, 0));
-		r.getZelle(0, 0).addFrage(f1);
+		// zweite Reihe
+		erstelleFrage(r, "an jeden Platz, Ort", xy(1, 5), Richtung.SENKRECHT, xy(1, 6), 7);
+		// dritte Reihe
+		erstelleFrage(r, "Ruhmesbau bei Regensburg", xy(2, 0), Richtung.SENKRECHT, xy(3, 0), 8);
+		erstelleFrage(r, "franz. weiblicher Artikel", xy(2, 2), Richtung.WAAGERECHT, xy(3, 2), 2);
+		erstelleFrage(r, "rege, munter", xy(2, 5), Richtung.WAAGERECHT, xy(3, 5), 7);
+		erstelleFrage(r, "Bundesstaat der USA", xy(2, 8), Richtung.SENKRECHT, xy(2, 9), 4);
 
-		erstelleFrage(r, "Westafrikaner", new Point(0, 1), Richtung.WAAGERECHT, new Point(1, 1), 5);
+		// vierte Reihe
+		erstelleFrage(r, "ausführen, verrichten", xy(3, 8), Richtung.WAAGERECHT, xy(4, 8), 3);
+		erstelleFrage(r, "Widerhall", xy(3, 11), Richtung.WAAGERECHT, xy(4, 11), 4);
+
+		// fünfte Reihe
+		erstelleFrage(r, "Handarbeitstechnik", xy(4, 0), Richtung.SENKRECHT, xy(4, 1), 6);
+		erstelleFrage(r, "freundlich", xy(4, 7), Richtung.WAAGERECHT, xy(5, 7), 3);
+		erstelleFrage(r, "weibliches Bühnenfach", xy(4, 10), Richtung.WAAGERECHT, xy(5, 10), 5);
 
 	}
 
@@ -170,5 +191,9 @@ public class CrosswordTest {
 			r.getZelle(x, y).addEigenschaft(Zelltyp.FRAGE);
 		}
 
+	}
+
+	private static Point xy(int x, int y) {
+		return new Point(x, y);
 	}
 }
