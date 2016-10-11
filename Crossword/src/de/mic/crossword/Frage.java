@@ -13,13 +13,9 @@ public class Frage {
 		this.frage = frage;
 	}
 
-	public void addZellen() {
-		// TODO Auto-generated method stub
-
-	}
 
 	/**
-	 * Fügt die Zellen hinzu, die für die Lösung sind
+	 * FÃ¼gt die Zellen hinzu, die fÃ¼r die LÃ¶sung sind
 	 * 
 	 * @param z1
 	 * @param z2
@@ -32,4 +28,12 @@ public class Frage {
 		listeDerZellen.stream().forEach(z -> loesungsZellen.add(z));
 	}
 
+	/**
+	 * Liefert die Lösungszellen zurück.
+	 * @return zellen für die Buchstaben.
+	 */
+	public List<Zelle> getZellen() {
+		return loesungsZellen;
+	}
+	
 }
