@@ -1,54 +1,79 @@
 package webservice;
 
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 
 public class WebContent {
 
-	public static void main(String[] args) {
-		System.out.println("Starte Programm");
-		Scanner scanner;
-		try {
-			System.out.println("Starte Scanner");
-			URL url = new URL(
-					"https://www.kreuzwort-raetsel.net/suche.php?field=0&s=die+Ackerkrume+lockern&go=suchen#suchbox");
+	public static void main(String[] args) throws IOException {
 
-			scanner = new Scanner(url.openStream());
-			System.out.println("Scanner fertig! Lese Seite:");
-			while (scanner.hasNextLine()) {
-				System.out.println(scanner.nextLine());
+		String u1 = "http://www.kreuzwort.net/fragen/gartenger%C3%A4t.htm";
+		String u2 = "https://www.xwords.de/quest/gartenger%C3%A4t";
+		/**
+		 * Danach kamen Links auf denen man drauf drücken musste!
+		 */
+		String u3 = "http://www.kreuzwort.net/suche?token=die+Ackerkrume+lockern";
+
+		String u4 = "http://www.kreuzwort-raetsel.com/f/gartenger%C3%A4t";
+
+		String u5 = "http://www.kreuzwort-raetsel.com/f/die-ackerkrume-lockern";
+
+		System.out.println(u1);
+		traversier(open(u1));
+		System.out.println(u2);
+		traversier(open(u2));
+		System.out.println(u3);
+		traversier(open(u3));
+		System.out.println(u4);
+		traversier(open(u4));
+
+		System.out.println(u5);
+		traversier(open(u5));
+
+		System.out.println("##################################################################");
+
+		// test1();
+
+	}
+
+	private static Document open(String url) throws IOException {
+		return Jsoup.connect(url).get();
+	}
+
+	private static void test1() throws IOException {
+		Document document = Jsoup
+				.connect(
+						"https://www.kreuzwort-raetsel.net/suche.php?field=0&s=die+Ackerkrume+lockern&go=suchen#suchbox")
+				.get();
+
+		traversier(document);
+	}
+
+	private static void traversier(Document document) {
+		Element content = document.getElementById("content");
+		if (content != null) {
+
+			Elements links = content.getElementsByTag("a");
+
+			List<String> result = new ArrayList<String>();
+			for (Element link : links) {
+				String linkHref = link.attr("href");
+				String linkText = link.text();
+				System.out.println("Links: " + linkText);
+				if (result.contains(linkText)) {
+					if (!linkText.isEmpty()) {
+						result.add(linkText);
+					}
+				}
 			}
-			scanner.close();
-		} catch (IOException e) {
-			System.err.println(e);
-			e.printStackTrace();
+		} else {
+			System.out.println("Nicht gefunden: ");
 		}
-		System.out.println(
-				"##################################################################################################################");
-		System.out.println(
-				"##################################################################################################################");
-		System.out.println(
-				"##################################################################################################################");
-		URL url;
-		try {
-
-			url = new URL(
-					"https://www.kreuzwort-raetsel.net/suche.php?field=0&s=die+Ackerkrume+lockern&go=suchen#suchbox");
-			Scanner scanner2 = new Scanner(new InputStreamReader(url.openStream()));
-			while (scanner2.hasNextLine()) {
-				System.out.println(scanner2.nextLine());
-			}
-			scanner2.close();
-		} catch (MalformedURLException e) {
-			System.err.println(e);
-			e.printStackTrace();
-		} catch (IOException e) {
-			System.err.println(e);
-			e.printStackTrace();
-		}
-
 	}
 }
