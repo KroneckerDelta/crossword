@@ -10,26 +10,70 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
+import webservice.webseite.RaetselHomepage;
+
 /**
  * Liefert von einer URL die Antworten zurück.
  * 
  * @author michael
  *
  */
-public class WebContent {
+public class AntwortenService {
 
-	public List<String> getAntworten(String url) throws IOException {
+	private RaetselHomepage homepage;
+	private List<String> fehlerhafteFragen = new ArrayList<>();
+	private List<String> keinErgebnis = new ArrayList<>();
+
+	/**
+	 * Erstellt einen Service für die entsprechenden Homepage.
+	 * 
+	 * @param homepage
+	 */
+	public AntwortenService(RaetselHomepage homepage) {
+		this.homepage = homepage;
+
+	}
+
+	/**
+	 * Holt von der konfigurierten Homepage die Antworten zur Rätselfrage
+	 * 
+	 * @param frage
+	 * @return
+	 * @throws IOException
+	 */
+	public List<String> getAntworten(String frage) {
+		String[] splitted = frage.split(",");
+		List<String> antworten = new ArrayList<>();
+		for (String s : splitted) {
+
+			String frageUmgestellt = new Umlaut2HtmlConverter().convertHtmlKonform(s);
+			try {
+				String url = homepage.getUrl(frageUmgestellt);
+				antworten.addAll(openConnectionAndCollectAnswers(url));
+				if (antworten.isEmpty()) {
+					keinErgebnis.add(frage);
+				}
+				return antworten;
+			} catch (IOException e) {
+				fehlerhafteFragen.add(frage);
+				// e.printStackTrace();
+			}
+		}
+		return antworten;
+	}
+
+	private List<String> openConnectionAndCollectAnswers(String url) throws IOException {
 		List<String> result = new ArrayList<>();
 
 		Document doc = open(url);
 
-		result.addAll(extractLoesungen(doc));
+		result.addAll(sammleLoesungen(doc));
 
 		return result;
 
 	}
 
-	private Collection<? extends String> extractLoesungen(Document doc) {
+	private Collection<? extends String> sammleLoesungen(Document doc) {
 		List<String> result = new ArrayList<String>();
 		Element content = doc.getElementById("content");
 		if (content != null) {
@@ -39,7 +83,7 @@ public class WebContent {
 			for (Element link : links) {
 				String linkText = link.text();
 				System.out.println("Antworten: " + linkText);
-				if (result.contains(linkText)) {
+				if (!result.contains(linkText)) {
 					if (!linkText.isEmpty()) {
 						result.add(linkText);
 					}
@@ -104,5 +148,23 @@ public class WebContent {
 		} else {
 			System.out.println("Nicht gefunden: ");
 		}
+	}
+
+	/**
+	 * Liefert die Fragen zurück, die beim Verbinden einen Fehler verursachten.
+	 * 
+	 * @return Liste mit Fragen.
+	 */
+	public List<String> getFehlerhafteFragen() {
+		return fehlerhafteFragen;
+	}
+
+	/**
+	 * Liefert dieFragen zurück, die kein Ergebnis lieferten.
+	 * 
+	 * @return Liste mit Fragen.
+	 */
+	public List<String> getKeinErgebnis() {
+		return keinErgebnis;
 	}
 }

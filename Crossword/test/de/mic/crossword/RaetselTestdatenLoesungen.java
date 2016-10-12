@@ -1,32 +1,14 @@
 package de.mic.crossword;
 
-import static de.mic.crossword.Testfragen.AN_JEDEN_PLATZ_ORT;
-import static de.mic.crossword.Testfragen.AUSFUEHREN_VERRICHTEN;
-import static de.mic.crossword.Testfragen.BALDRIANGEWAECHS;
-import static de.mic.crossword.Testfragen.BIBL_STAMMVATER_ARCHE;
-import static de.mic.crossword.Testfragen.BUNDESSTAAT_DER_USA;
-import static de.mic.crossword.Testfragen.DIE_ACKERKRUME_LOCKERN;
-import static de.mic.crossword.Testfragen.EIWEISSHALTIGE_NUTZPFLANZE;
-import static de.mic.crossword.Testfragen.FRANZ_WEIBLICHER_ARTIKEL;
-import static de.mic.crossword.Testfragen.FREUNDLICH;
-import static de.mic.crossword.Testfragen.GARTENGERAET_HARKE;
-import static de.mic.crossword.Testfragen.HANDARBEITSTECHNIK;
-import static de.mic.crossword.Testfragen.LAUTSTAERKEMASS;
-import static de.mic.crossword.Testfragen.PAPSTKRONE;
-import static de.mic.crossword.Testfragen.REGE_MUNTER;
-import static de.mic.crossword.Testfragen.RUHMESBAU_BEI_REGENSBURG;
-import static de.mic.crossword.Testfragen.WEIBLICHES_BUEHNENFACH;
-import static de.mic.crossword.Testfragen.WESTAFRIKANER;
-import static de.mic.crossword.Testfragen.WIDERHALL;
-import static de.mic.crossword.Testfragen.WUERDIGEN_AUSZEICHNEN_UGS;
-
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import webservice.AntwortenService;
+import webservice.webseite.KreuzwortraetselDotCom;
+
 /**
- * Diese Klasse beinhaltet die L�sungen f�r die Testdaten.
+ * Diese Klasse beinhaltet die Lösungen für die Testdaten.
  * 
  * @author michael
  *
@@ -34,50 +16,68 @@ import java.util.Map;
 public class RaetselTestdatenLoesungen {
 
 	private Map<String, List<String>> loesungen = new HashMap<>();
+	KreuzwortraetselDotCom homepage = new KreuzwortraetselDotCom();
+	AntwortenService service = new AntwortenService(homepage);
 
 	/**
 	 
 	 */
 	public RaetselTestdatenLoesungen() {
 		fillDaten();
+
+		checkDaten();
+	}
+
+	private void checkDaten() {
+		System.out.println("Frage/Antworten: " + loesungen);
+		System.out.println("Fehler beim Zugriff: " + service.getFehlerhafteFragen().size());
+		System.out.println(service.getFehlerhafteFragen());
+		System.out.println("Kein Ergebnis: " + service.getKeinErgebnis().size());
+		System.out.println(service.getKeinErgebnis());
+
 	}
 
 	private void fillDaten() {
-		loesungen.put(Testfragen.AN_JEDEN_PLATZ_ORT, Arrays.asList("abc", "def"));
 
-		loesungen.put(DIE_ACKERKRUME_LOCKERN, Arrays.asList("abc", "def"));
-		loesungen.put(WESTAFRIKANER, Arrays.asList("abc", "def"));
-		loesungen.put(GARTENGERAET_HARKE, Arrays.asList("abc", "def"));
-		loesungen.put(BIBL_STAMMVATER_ARCHE, Arrays.asList("abc", "def"));
-		loesungen.put(WUERDIGEN_AUSZEICHNEN_UGS, Arrays.asList("abc", "def"));
-		loesungen.put(EIWEISSHALTIGE_NUTZPFLANZE, Arrays.asList("abc", "def"));
-		loesungen.put(PAPSTKRONE, Arrays.asList("abc", "def"));
-		loesungen.put(LAUTSTAERKEMASS, Arrays.asList("abc", "def"));
-		loesungen.put(BALDRIANGEWAECHS, Arrays.asList("abc", "def"));
+		fillMap(Testfragen.AN_JEDEN_PLATZ_ORT, loesungen, service);
+		fillMap(Testfragen.DIE_ACKERKRUME_LOCKERN, loesungen, service);
+		fillMap(Testfragen.WESTAFRIKANER, loesungen, service);
+		fillMap(Testfragen.GARTENGERAET_HARKE, loesungen, service);
+		fillMap(Testfragen.BIBL_STAMMVATER_ARCHE, loesungen, service);
+		fillMap(Testfragen.WUERDIGEN_AUSZEICHNEN_UGS, loesungen, service);
+		fillMap(Testfragen.EIWEISSHALTIGE_NUTZPFLANZE, loesungen, service);
+		fillMap(Testfragen.PAPSTKRONE, loesungen, service);
+		fillMap(Testfragen.LAUTSTAERKEMASS, loesungen, service);
+		fillMap(Testfragen.BALDRIANGEWAECHS, loesungen, service);
 
-		loesungen.put(AN_JEDEN_PLATZ_ORT, Arrays.asList("abc", "def"));
+		fillMap(Testfragen.RUHMESBAU_BEI_REGENSBURG, loesungen, service);
+		fillMap(Testfragen.FRANZ_WEIBLICHER_ARTIKEL, loesungen, service);
+		fillMap(Testfragen.REGE_MUNTER, loesungen, service);
+		fillMap(Testfragen.BUNDESSTAAT_DER_USA, loesungen, service);
+		fillMap(Testfragen.AUSFUEHREN_VERRICHTEN, loesungen, service);
+		fillMap(Testfragen.WIDERHALL, loesungen, service);
+		fillMap(Testfragen.HANDARBEITSTECHNIK, loesungen, service);
+		fillMap(Testfragen.FREUNDLICH, loesungen, service);
+		fillMap(Testfragen.WEIBLICHES_BUEHNENFACH, loesungen, service);
 
-		loesungen.put(RUHMESBAU_BEI_REGENSBURG, Arrays.asList("abc", "def"));
-		loesungen.put(FRANZ_WEIBLICHER_ARTIKEL, Arrays.asList("abc", "def"));
-		loesungen.put(REGE_MUNTER, Arrays.asList("abc", "def"));
-		loesungen.put(BUNDESSTAAT_DER_USA, Arrays.asList("abc", "def"));
+	}
 
-		loesungen.put(AUSFUEHREN_VERRICHTEN, Arrays.asList("abc", "def"));
-		loesungen.put(WIDERHALL, Arrays.asList("abc", "def"));
-
-		loesungen.put(HANDARBEITSTECHNIK, Arrays.asList("abc", "def"));
-		loesungen.put(FREUNDLICH, Arrays.asList("abc", "def"));
-		loesungen.put(WEIBLICHES_BUEHNENFACH, Arrays.asList("abc", "def"));
+	private void fillMap(String key, Map<String, List<String>> map, AntwortenService service) {
+		map.put(key, service.getAntworten(key));
 
 	}
 
 	/**
-	 * Liefert die Testdaten zur�ck.
+	 * Liefert die Testdaten zur+ck.
 	 * 
 	 * @param frage
 	 * @return
 	 */
 	public List<String> getAntworten(String frage) {
 		return loesungen.get(frage);
+	}
+
+	public static void main(String[] args) {
+		new RaetselTestdatenLoesungen();
 	}
 }

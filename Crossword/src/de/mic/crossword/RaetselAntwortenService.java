@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * Holt zu einer Frage m�gliche Antworten
+ * Holt zu einer Frage mögliche Antworten
  * 
  * @author michael
  *

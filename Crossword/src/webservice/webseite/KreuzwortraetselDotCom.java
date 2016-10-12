@@ -1,6 +1,6 @@
 package webservice.webseite;
 
-public class KreuzwortraetselDotCom {
+public class KreuzwortraetselDotCom implements RaetselHomepage {
 
 	private final String URL = "http://www.kreuzwort-raetsel.com/f/";
 
