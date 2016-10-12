@@ -2,6 +2,7 @@ package webservice;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import org.jsoup.Jsoup;
@@ -9,7 +10,44 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
+/**
+ * Liefert von einer URL die Antworten zurück.
+ * 
+ * @author michael
+ *
+ */
 public class WebContent {
+
+	public List<String> getAntworten(String url) throws IOException {
+		List<String> result = new ArrayList<>();
+
+		Document doc = open(url);
+
+		result.addAll(extractLoesungen(doc));
+
+		return result;
+
+	}
+
+	private Collection<? extends String> extractLoesungen(Document doc) {
+		List<String> result = new ArrayList<String>();
+		Element content = doc.getElementById("content");
+		if (content != null) {
+
+			Elements links = content.getElementsByTag("a");
+
+			for (Element link : links) {
+				String linkText = link.text();
+				System.out.println("Antworten: " + linkText);
+				if (result.contains(linkText)) {
+					if (!linkText.isEmpty()) {
+						result.add(linkText);
+					}
+				}
+			}
+		}
+		return result;
+	}
 
 	public static void main(String[] args) throws IOException {
 
@@ -46,15 +84,6 @@ public class WebContent {
 		return Jsoup.connect(url).get();
 	}
 
-	private static void test1() throws IOException {
-		Document document = Jsoup
-				.connect(
-						"https://www.kreuzwort-raetsel.net/suche.php?field=0&s=die+Ackerkrume+lockern&go=suchen#suchbox")
-				.get();
-
-		traversier(document);
-	}
-
 	private static void traversier(Document document) {
 		Element content = document.getElementById("content");
 		if (content != null) {
@@ -63,7 +92,7 @@ public class WebContent {
 
 			List<String> result = new ArrayList<String>();
 			for (Element link : links) {
-				String linkHref = link.attr("href");
+
 				String linkText = link.text();
 				System.out.println("Links: " + linkText);
 				if (result.contains(linkText)) {
