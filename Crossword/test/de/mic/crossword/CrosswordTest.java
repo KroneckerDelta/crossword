@@ -1,5 +1,26 @@
 package de.mic.crossword;
 
+import static de.mic.crossword.Testfragen.ANZAHL_REIHEN;
+import static de.mic.crossword.Testfragen.ANZAHL_SPALTEN;
+import static de.mic.crossword.Testfragen.AN_JEDEN_PLATZ_ORT;
+import static de.mic.crossword.Testfragen.AUSFUEHREN_VERRICHTEN;
+import static de.mic.crossword.Testfragen.BALDRIANGEWAECHS;
+import static de.mic.crossword.Testfragen.BIBL_STAMMVATER_ARCHE;
+import static de.mic.crossword.Testfragen.BUNDESSTAAT_DER_USA;
+import static de.mic.crossword.Testfragen.DIE_ACKERKRUME_LOCKERN;
+import static de.mic.crossword.Testfragen.EIWEISSHALTIGE_NUTZPFLANZE;
+import static de.mic.crossword.Testfragen.FRANZ_WEIBLICHER_ARTIKEL;
+import static de.mic.crossword.Testfragen.FREUNDLICH;
+import static de.mic.crossword.Testfragen.GARTENGERAET_HARKE;
+import static de.mic.crossword.Testfragen.HANDARBEITSTECHNIK;
+import static de.mic.crossword.Testfragen.LAUTSTAERKEMASS;
+import static de.mic.crossword.Testfragen.PAPSTKRONE;
+import static de.mic.crossword.Testfragen.REGE_MUNTER;
+import static de.mic.crossword.Testfragen.RUHMESBAU_BEI_REGENSBURG;
+import static de.mic.crossword.Testfragen.WEIBLICHES_BUEHNENFACH;
+import static de.mic.crossword.Testfragen.WESTAFRIKANER;
+import static de.mic.crossword.Testfragen.WIDERHALL;
+import static de.mic.crossword.Testfragen.WUERDIGEN_AUSZEICHNEN_UGS;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
@@ -16,48 +37,6 @@ import org.junit.Test;
 import de.mic.crossword.Raetsel.Richtung;
 
 public class CrosswordTest {
-
-	private static final String WEIBLICHES_BUEHNENFACH = "weibliches Bühnenfach";
-
-	private static final String FREUNDLICH = "freundlich";
-
-	private static final String HANDARBEITSTECHNIK = "Handarbeitstechnik";
-
-	private static final String WIDERHALL = "Widerhall";
-
-	private static final String AUSFUEHREN_VERRICHTEN = "ausführen, verrichten";
-
-	private static final String BUNDESSTAAT_DER_USA = "Bundesstaat der USA";
-
-	private static final String REGE_MUNTER = "rege, munter";
-
-	private static final String FRANZ_WEIBLICHER_ARTIKEL = "franz. weiblicher Artikel";
-
-	private static final String RUHMESBAU_BEI_REGENSBURG = "Ruhmesbau bei Regensburg";
-
-	private static final String AN_JEDEN_PLATZ_ORT = "an jeden Platz, Ort";
-
-	private static final String BALDRIANGEWAECHS = "Baldriangewächs";
-
-	private static final String LAUTSTAERKEMASS = "Lautstärkemaß";
-
-	private static final String PAPSTKRONE = "Papstkrone";
-
-	private static final String EIWEISSHALTIGE_NUTZPFLANZE = "eiweißhaltige Nutzpflanze";
-
-	private static final String WUERDIGEN_AUSZEICHNEN_UGS = "würdigen, auszeichnen (ugs.)";
-
-	private static final String BIBL_STAMMVATER_ARCHE = "bibl. Stammvater (Arche)";
-
-	private static final String GARTENGERAET_HARKE = "Gartengerät, Harke";
-
-	private static final String WESTAFRIKANER = "Westafrikaner";
-
-	private static final String DIE_ACKERKRUME_LOCKERN = "die Ackerkrume lockern";
-
-	private static final int ANZAHL_REIHEN = 13;
-
-	private static final int ANZAHL_SPALTEN = 13;
 
 	/**
 	 * Dieser Test erstellt das Rätsel aus dem Bilder-Ordner
