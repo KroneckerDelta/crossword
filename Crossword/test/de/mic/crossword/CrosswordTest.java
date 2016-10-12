@@ -17,6 +17,44 @@ import de.mic.crossword.Raetsel.Richtung;
 
 public class CrosswordTest {
 
+	private static final String WEIBLICHES_BUEHNENFACH = "weibliches BÃ¼hnenfach";
+
+	private static final String FREUNDLICH = "freundlich";
+
+	private static final String HANDARBEITSTECHNIK = "Handarbeitstechnik";
+
+	private static final String WIDERHALL = "Widerhall";
+
+	private static final String AUSFUEHREN_VERRICHTEN = "ausfÃ¼hren, verrichten";
+
+	private static final String BUNDESSTAAT_DER_USA = "Bundesstaat der USA";
+
+	private static final String REGE_MUNTER = "rege, munter";
+
+	private static final String FRANZ_WEIBLICHER_ARTIKEL = "franz. weiblicher Artikel";
+
+	private static final String RUHMESBAU_BEI_REGENSBURG = "Ruhmesbau bei Regensburg";
+
+	private static final String AN_JEDEN_PLATZ_ORT = "an jeden Platz, Ort";
+
+	private static final String BALDRIANGEWAECHS = "BaldriangewÃ¤chs";
+
+	private static final String LAUTSTAERKEMASS = "LautstÃ¤rkemaÃŸ";
+
+	private static final String PAPSTKRONE = "Papstkrone";
+
+	private static final String EIWEISSHALTIGE_NUTZPFLANZE = "eiweiÃŸhaltige Nutzpflanze";
+
+	private static final String WUERDIGEN_AUSZEICHNEN_UGS = "wÃ¼rdigen, auszeichnen (ugs.)";
+
+	private static final String BIBL_STAMMVATER_ARCHE = "bibl. Stammvater (Arche)";
+
+	private static final String GARTENGERAET_HARKE = "GartengerÃ¤t, Harke";
+
+	private static final String WESTAFRIKANER = "Westafrikaner";
+
+	private static final String DIE_ACKERKRUME_LOCKERN = "die Ackerkrume lockern";
+
 	private static final int ANZAHL_REIHEN = 13;
 
 	private static final int ANZAHL_SPALTEN = 13;
@@ -103,39 +141,52 @@ public class CrosswordTest {
 	private void fuegeEchteFragenHinzu(Raetsel r) {
 
 		// Erste Reihe
-		erstelleFrage(r, "die Ackerkrume lockern", new Point(0, 0), Richtung.SENKRECHT, new Point(1, 0), 5);
-		erstelleFrage(r, "Westafrikaner", new Point(0, 1), Richtung.WAAGERECHT, new Point(1, 1), 7);
-		erstelleFrage(r, "Gartengerät, Harke", xy(0, 2), Richtung.WAAGERECHT, xy(0, 2), 6);
-		erstelleFrage(r, "bibl. Stammvater (Arche)", xy(0, 4), Richtung.WAAGERECHT, xy(1, 4), 4);
-		erstelleFrage(r, "würdigen, auszeichnen (ugs.)", xy(0, 5), Richtung.WAAGERECHT, xy(0, 6), 5);
-		erstelleFrage(r, "eiweißhaltige Nutzpflanze", xy(0, 8), Richtung.WAAGERECHT, xy(0, 7), 4);
-		erstelleFrage(r, "Papstkrone", xy(0, 9), Richtung.WAAGERECHT, xy(1, 9), 5);
-		erstelleFrage(r, "Lautstärkemaß", xy(0, 10), Richtung.WAAGERECHT, xy(0, 9), 4);
-		erstelleFrage(r, "Baldriangewächs", xy(0, 11), Richtung.WAAGERECHT, xy(1, 11), 5);
+		erstelleFrage(r, DIE_ACKERKRUME_LOCKERN, new Point(0, 0), Richtung.SENKRECHT, new Point(1, 0), 5);
+		erstelleFrage(r, WESTAFRIKANER, new Point(0, 1), Richtung.WAAGERECHT, new Point(1, 1), 7);
+		erstelleFrage(r, GARTENGERAET_HARKE, xy(0, 2), Richtung.WAAGERECHT, xy(0, 2), 6);
+		erstelleFrage(r, BIBL_STAMMVATER_ARCHE, xy(0, 4), Richtung.WAAGERECHT, xy(1, 4), 4);
+		erstelleFrage(r, WUERDIGEN_AUSZEICHNEN_UGS, xy(0, 5), Richtung.WAAGERECHT, xy(0, 6), 5);
+		erstelleFrage(r, EIWEISSHALTIGE_NUTZPFLANZE, xy(0, 8), Richtung.WAAGERECHT, xy(0, 7), 4);
+		erstelleFrage(r, PAPSTKRONE, xy(0, 9), Richtung.WAAGERECHT, xy(1, 9), 5);
+		erstelleFrage(r, LAUTSTAERKEMASS, xy(0, 10), Richtung.WAAGERECHT, xy(0, 9), 4);
+		erstelleFrage(r, BALDRIANGEWAECHS, xy(0, 11), Richtung.WAAGERECHT, xy(1, 11), 5);
 
 		// zweite Reihe
-		erstelleFrage(r, "an jeden Platz, Ort", xy(1, 5), Richtung.SENKRECHT, xy(1, 6), 7);
+		erstelleFrage(r, AN_JEDEN_PLATZ_ORT, xy(1, 5), Richtung.SENKRECHT, xy(1, 6), 7);
 		// dritte Reihe
-		erstelleFrage(r, "Ruhmesbau bei Regensburg", xy(2, 0), Richtung.SENKRECHT, xy(3, 0), 8);
-		erstelleFrage(r, "franz. weiblicher Artikel", xy(2, 2), Richtung.WAAGERECHT, xy(3, 2), 2);
-		erstelleFrage(r, "rege, munter", xy(2, 5), Richtung.WAAGERECHT, xy(3, 5), 7);
-		erstelleFrage(r, "Bundesstaat der USA", xy(2, 8), Richtung.SENKRECHT, xy(2, 9), 4);
+		erstelleFrage(r, RUHMESBAU_BEI_REGENSBURG, xy(2, 0), Richtung.SENKRECHT, xy(3, 0), 8);
+		erstelleFrage(r, FRANZ_WEIBLICHER_ARTIKEL, xy(2, 2), Richtung.WAAGERECHT, xy(3, 2), 2);
+		erstelleFrage(r, REGE_MUNTER, xy(2, 5), Richtung.WAAGERECHT, xy(3, 5), 7);
+		erstelleFrage(r, BUNDESSTAAT_DER_USA, xy(2, 8), Richtung.SENKRECHT, xy(2, 9), 4);
 
 		// vierte Reihe
-		erstelleFrage(r, "ausführen, verrichten", xy(3, 8), Richtung.WAAGERECHT, xy(4, 8), 3);
-		erstelleFrage(r, "Widerhall", xy(3, 11), Richtung.WAAGERECHT, xy(4, 11), 4);
+		erstelleFrage(r, AUSFUEHREN_VERRICHTEN, xy(3, 8), Richtung.WAAGERECHT, xy(4, 8), 3);
+		erstelleFrage(r, WIDERHALL, xy(3, 11), Richtung.WAAGERECHT, xy(4, 11), 4);
 
-		// fünfte Reihe
-		erstelleFrage(r, "Handarbeitstechnik", xy(4, 0), Richtung.SENKRECHT, xy(4, 1), 6);
-		erstelleFrage(r, "freundlich", xy(4, 7), Richtung.WAAGERECHT, xy(5, 7), 3);
-		erstelleFrage(r, "weibliches Bühnenfach", xy(4, 10), Richtung.WAAGERECHT, xy(5, 10), 5);
+		// fï¿½nfte Reihe
+		erstelleFrage(r, HANDARBEITSTECHNIK, xy(4, 0), Richtung.SENKRECHT, xy(4, 1), 6);
+		erstelleFrage(r, FREUNDLICH, xy(4, 7), Richtung.WAAGERECHT, xy(5, 7), 3);
+		erstelleFrage(r, WEIBLICHES_BUEHNENFACH, xy(4, 10), Richtung.WAAGERECHT, xy(5, 10), 5);
 
 	}
 
 	private void erstelleFrage(Raetsel r, String frage, Point frageXY, Richtung richtung, Point antwortXY, int anzahl) {
 		Frage f2 = new Frage(frage);
 		f2.addZellen(r.getZellen(anzahl, richtung, antwortXY));
-		r.getZelle(frageXY.x, frageXY.y).addFrage(f2);
+		Zelle zelle = r.getZelle(frageXY.x, frageXY.y);
+		zelle.addFrage(f2);
+		f2.setAntworten(getAntworten(f2));
+	}
+
+	private List<String> getAntworten(Frage f) {
+		RaetselAntwortenService s = new RaetselAntwortenService() {
+			@Override
+			protected List<String> getAntworten(String frage) {
+				return new RaetselTestdatenLoesungen().getAntworten(frage);
+			}
+		};
+		return s.getAntworten(f.getFrage());
+
 	}
 
 	private void erstelleDieGewinnerZellen(Raetsel r) {

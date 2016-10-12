@@ -1,10 +1,11 @@
 package de.mic.crossword;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
- * Holt zu einer Frage mögliche Antworten
+ * Holt zu einer Frage mï¿½gliche Antworten
  * 
  * @author michael
  *
@@ -26,6 +27,16 @@ public class RaetselAntwortenService {
 
 		return result;
 
+	}
+
+	/**
+	 * Liefert fÃ¼r eine Frage eine Liste von Antworten.
+	 * 
+	 * @param frage
+	 * @return
+	 */
+	protected List<String> getAntworten(String frage) {
+		return Arrays.asList("");
 	}
 
 }
