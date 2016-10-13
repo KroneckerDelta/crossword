@@ -1,22 +1,33 @@
 package de.mic.crossword;
 
+import static de.mic.crossword.Testfragen.ALGERISCHE_STADT;
 import static de.mic.crossword.Testfragen.ANZAHL_REIHEN;
 import static de.mic.crossword.Testfragen.ANZAHL_SPALTEN;
 import static de.mic.crossword.Testfragen.AN_JEDEN_PLATZ_ORT;
 import static de.mic.crossword.Testfragen.AUSFUEHREN_VERRICHTEN;
 import static de.mic.crossword.Testfragen.BALDRIANGEWAECHS;
 import static de.mic.crossword.Testfragen.BIBL_STAMMVATER_ARCHE;
+import static de.mic.crossword.Testfragen.BUCH_DES_ALTEN_TESTAMENTS;
 import static de.mic.crossword.Testfragen.BUNDESSTAAT_DER_USA;
 import static de.mic.crossword.Testfragen.DIE_ACKERKRUME_LOCKERN;
+import static de.mic.crossword.Testfragen.DUESENFLUGZEUG;
+import static de.mic.crossword.Testfragen.EINWOHNER_DER_GRIECH_HAUPTSTADT;
 import static de.mic.crossword.Testfragen.EIWEISSHALTIGE_NUTZPFLANZE;
+import static de.mic.crossword.Testfragen.FEINER_UNTERSCHIED_FEINHEIT;
 import static de.mic.crossword.Testfragen.FRANZ_WEIBLICHER_ARTIKEL;
 import static de.mic.crossword.Testfragen.FREUNDLICH;
+import static de.mic.crossword.Testfragen.FRUEHERE_MUENZE;
 import static de.mic.crossword.Testfragen.GARTENGERAET_HARKE;
+import static de.mic.crossword.Testfragen.GEBIRGE_ZWISCHEN_EUROPA_UND_ASIEN;
 import static de.mic.crossword.Testfragen.HANDARBEITSTECHNIK;
+import static de.mic.crossword.Testfragen.KNOCHENGERUEST;
 import static de.mic.crossword.Testfragen.LAUTSTAERKEMASS;
 import static de.mic.crossword.Testfragen.PAPSTKRONE;
 import static de.mic.crossword.Testfragen.REGE_MUNTER;
+import static de.mic.crossword.Testfragen.REICH_AN_LICHT;
 import static de.mic.crossword.Testfragen.RUHMESBAU_BEI_REGENSBURG;
+import static de.mic.crossword.Testfragen.STADT_AN_DER_MURG;
+import static de.mic.crossword.Testfragen.VERMUTEN;
 import static de.mic.crossword.Testfragen.WEIBLICHES_BUEHNENFACH;
 import static de.mic.crossword.Testfragen.WESTAFRIKANER;
 import static de.mic.crossword.Testfragen.WIDERHALL;
@@ -142,10 +153,31 @@ public class CrosswordTest {
 		erstelleFrage(r, AUSFUEHREN_VERRICHTEN, xy(3, 8), Richtung.WAAGERECHT, xy(4, 8), 3);
 		erstelleFrage(r, WIDERHALL, xy(3, 11), Richtung.WAAGERECHT, xy(4, 11), 4);
 
-		// f�nfte Reihe
+		// fünfte Reihe
 		erstelleFrage(r, HANDARBEITSTECHNIK, xy(4, 0), Richtung.SENKRECHT, xy(4, 1), 6);
 		erstelleFrage(r, FREUNDLICH, xy(4, 7), Richtung.WAAGERECHT, xy(5, 7), 3);
 		erstelleFrage(r, WEIBLICHES_BUEHNENFACH, xy(4, 10), Richtung.WAAGERECHT, xy(5, 10), 5);
+
+		// Ab hier nur noch die Gewinnerspalten.
+		// 8
+		erstelleFrage(r, DUESENFLUGZEUG, xy(5, 0), Richtung.SENKRECHT, xy(6, 0), 3);
+		// 9
+		erstelleFrage(r, FRUEHERE_MUENZE, xy(5, 2), Richtung.WAAGERECHT, xy(6, 2), 5);
+		erstelleFrage(r, ALGERISCHE_STADT, xy(10, 0), Richtung.SENKRECHT, xy(10, 1), 4);
+		// 7
+		erstelleFrage(r, EINWOHNER_DER_GRIECH_HAUPTSTADT, xy(5, 4), Richtung.WAAGERECHT, xy(5, 4), 7);
+		erstelleFrage(r, STADT_AN_DER_MURG, xy(7, 0), Richtung.SENKRECHT, xy(7, 1), 7);
+		// 1
+		erstelleFrage(r, KNOCHENGERUEST, xy(8, 0), Richtung.SENKRECHT, xy(9, 0), 7);
+		// 3
+		erstelleFrage(r, VERMUTEN, xy(6, 3), Richtung.SENKRECHT, xy(6, 4), 5);
+		// 4
+		erstelleFrage(r, GEBIRGE_ZWISCHEN_EUROPA_UND_ASIEN, xy(10, 5), Richtung.SENKRECHT, xy(10, 6), 4);
+		erstelleFrage(r, REICH_AN_LICHT, xy(6, 9), Richtung.WAAGERECHT, xy(7, 9), 4);
+		// 6
+		erstelleFrage(r, BUCH_DES_ALTEN_TESTAMENTS, xy(7, 8), Richtung.SENKRECHT, xy(8, 9), 4);
+		// 5
+		erstelleFrage(r, FEINER_UNTERSCHIED_FEINHEIT, xy(5, 6), Richtung.SENKRECHT, xy(5, 7), 6);
 
 	}
 

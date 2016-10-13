@@ -45,6 +45,23 @@ public class Testfragen {
 
 	public static final String DIE_ACKERKRUME_LOCKERN = "die Ackerkrume lockern";
 
+	public static final String DUESENFLUGZEUG = "Düsenflugzeug (ugs.)";
+
+	public static final String FRUEHERE_MUENZE = "frühere Münze";
+	public static final String ALGERISCHE_STADT = "algerische Stadt";
+
+	public static final String EINWOHNER_DER_GRIECH_HAUPTSTADT = "Einwohner der griech. Hauptst.";
+	public static final String KNOCHENGERUEST = "Knochengerüst";
+	public static final String STADT_AN_DER_MURG = "Stadt ab der Murg (Baden-Württ.)";
+
+	public static final String VERMUTEN = "Vermuten";
+
+	public static final String BUCH_DES_ALTEN_TESTAMENTS = "Buch des alten Testamentes";
+	public static final String GEBIRGE_ZWISCHEN_EUROPA_UND_ASIEN = "Gebirge zwischen Europa u. Asien";
+	public static final String REICH_AN_LICHT = "reich an Licht";
+
+	public static final String FEINER_UNTERSCHIED_FEINHEIT = "feiner Unterschied; Feinheit";
+
 	public static final int ANZAHL_REIHEN = 13;
 
 	public static final int ANZAHL_SPALTEN = 13;
