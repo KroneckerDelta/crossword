@@ -1,6 +1,5 @@
 package de.mic.crossword;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -17,18 +16,13 @@ import webservice.webseite.KreuzwortraetselDotCom;
 public class RaetselTestdatenLoesungen {
 
 	private Map<String, List<String>> loesungen = new HashMap<>();
-	KreuzwortraetselDotCom homepage = new KreuzwortraetselDotCom();
-	AntwortenService service = new AntwortenService(homepage) {
-		@Override
-		public List<String> getAntworten(String frage) {
-			return new ArrayList<>();
-		}
-	};
+	AntwortenService service = null;
 
 	/**
 	 
 	 */
-	public RaetselTestdatenLoesungen() {
+	public RaetselTestdatenLoesungen(AntwortenService service) {
+		this.service = service;
 		fillDaten();
 
 		checkDaten();
@@ -66,6 +60,18 @@ public class RaetselTestdatenLoesungen {
 		fillMap(Testfragen.FREUNDLICH, loesungen, service);
 		fillMap(Testfragen.WEIBLICHES_BUEHNENFACH, loesungen, service);
 
+		fillMap(Testfragen.DUESENFLUGZEUG, loesungen, service);
+		fillMap(Testfragen.FRUEHERE_MUENZE, loesungen, service);
+		fillMap(Testfragen.ALGERISCHE_STADT, loesungen, service);
+		fillMap(Testfragen.EINWOHNER_DER_GRIECH_HAUPTSTADT, loesungen, service);
+		fillMap(Testfragen.KNOCHENGERUEST, loesungen, service);
+		fillMap(Testfragen.STADT_AN_DER_MURG, loesungen, service);
+		fillMap(Testfragen.VERMUTEN, loesungen, service);
+		fillMap(Testfragen.BUCH_DES_ALTEN_TESTAMENTS, loesungen, service);
+		fillMap(Testfragen.GEBIRGE_ZWISCHEN_EUROPA_UND_ASIEN, loesungen, service);
+		fillMap(Testfragen.REICH_AN_LICHT, loesungen, service);
+		fillMap(Testfragen.FEINER_UNTERSCHIED_FEINHEIT, loesungen, service);
+
 	}
 
 	private void fillMap(String key, Map<String, List<String>> map, AntwortenService service) {
@@ -84,6 +90,6 @@ public class RaetselTestdatenLoesungen {
 	}
 
 	public static void main(String[] args) {
-		new RaetselTestdatenLoesungen();
+		new RaetselTestdatenLoesungen(new AntwortenService(new KreuzwortraetselDotCom()));
 	}
 }

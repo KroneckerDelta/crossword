@@ -46,6 +46,8 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import de.mic.crossword.Raetsel.Richtung;
+import webservice.AntwortenService;
+import webservice.webseite.KreuzwortraetselDotCom;
 
 public class CrosswordTest {
 
@@ -195,8 +197,16 @@ public class CrosswordTest {
 
 			@Override
 			protected List<String> getAntworten(String frage) {
+
+				AntwortenService service = new AntwortenService(new KreuzwortraetselDotCom()) {
+					@Override
+					public List<String> getAntworten(String frage) {
+						return new ArrayList<String>();
+					}
+				};
+
 				if (raetselTestdatenLoesungen == null) {
-					raetselTestdatenLoesungen = new RaetselTestdatenLoesungen();
+					raetselTestdatenLoesungen = new RaetselTestdatenLoesungen(service);
 				}
 				return raetselTestdatenLoesungen.getAntworten(frage);
 			}
@@ -300,4 +310,14 @@ public class CrosswordTest {
 		assertEquals(1, zelle.getFragen().size());
 
 	}
+
+	@Test
+	public void zelleHatZweiFragen() throws Exception {
+		Raetsel r = erstelleRaetsel();
+
+		Zelle zelle = r.getZelle(1, 3);
+		assertEquals(2, zelle.getFragen().size());
+
+	}
+
 }
