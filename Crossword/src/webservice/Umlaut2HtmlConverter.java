@@ -32,17 +32,17 @@ public class Umlaut2HtmlConverter {
 		// .replaceAll(SS, SS_HTML);
 	}
 
-	private String splittedString(String original) {
-		StringBuffer result = new StringBuffer();
-		String[] split = original.split(",");
-		for (int i = 0; i < split.length; i++) {
-			result.append(split[i].trim());
-			if (i < split.length - 1) {
-				result.append("+");
-			}
-		}
-
-		return result.toString();
-	}
+	// private String splittedString(String original) {
+	// StringBuffer result = new StringBuffer();
+	// String[] split = original.split(",");
+	// for (int i = 0; i < split.length; i++) {
+	// result.append(split[i].trim());
+	// if (i < split.length - 1) {
+	// result.append("+");
+	// }
+	// }
+	//
+	// return result.toString();
+	// }
 
 }

@@ -122,7 +122,7 @@ public class CrosswordTest {
 		// Erste Reihe
 		erstelleFrage(r, DIE_ACKERKRUME_LOCKERN, new Point(0, 0), Richtung.SENKRECHT, new Point(1, 0), 5);
 		erstelleFrage(r, WESTAFRIKANER, new Point(0, 1), Richtung.WAAGERECHT, new Point(1, 1), 7);
-		erstelleFrage(r, GARTENGERAET_HARKE, xy(0, 2), Richtung.WAAGERECHT, xy(0, 2), 6);
+		erstelleFrage(r, GARTENGERAET_HARKE, xy(0, 3), Richtung.WAAGERECHT, xy(0, 3), 6);
 		erstelleFrage(r, BIBL_STAMMVATER_ARCHE, xy(0, 4), Richtung.WAAGERECHT, xy(1, 4), 4);
 		erstelleFrage(r, WUERDIGEN_AUSZEICHNEN_UGS, xy(0, 5), Richtung.WAAGERECHT, xy(0, 6), 5);
 		erstelleFrage(r, EIWEISSHALTIGE_NUTZPFLANZE, xy(0, 8), Richtung.WAAGERECHT, xy(0, 7), 4);
@@ -159,9 +159,14 @@ public class CrosswordTest {
 
 	private List<String> getAntworten(Frage f) {
 		RaetselAntwortenService s = new RaetselAntwortenService() {
+			private RaetselTestdatenLoesungen raetselTestdatenLoesungen;
+
 			@Override
 			protected List<String> getAntworten(String frage) {
-				return new RaetselTestdatenLoesungen().getAntworten(frage);
+				if (raetselTestdatenLoesungen == null) {
+					raetselTestdatenLoesungen = new RaetselTestdatenLoesungen();
+				}
+				return raetselTestdatenLoesungen.getAntworten(frage);
 			}
 		};
 		return s.getAntworten(f.getFrage());
@@ -234,5 +239,33 @@ public class CrosswordTest {
 
 	private static Point xy(int x, int y) {
 		return new Point(x, y);
+	}
+
+	@Test
+	public void zelleHatFrageMitAckerkrumeLockern() throws Exception {
+		Raetsel r = erstelleRaetsel();
+
+		Zelle zelle = r.getZelle(1, 2);
+		Frage frage = zelle.getFragen().get(0);
+		String text = frage.getFrage();
+		assertEquals(DIE_ACKERKRUME_LOCKERN, text);
+	}
+
+	@Test
+	public void zelleHatFragen() throws Exception {
+		Raetsel r = erstelleRaetsel();
+
+		Zelle zelle = r.getZelle(1, 2);
+		assertFalse(zelle.getFragen().isEmpty());
+
+	}
+
+	@Test
+	public void zelleHatNurEineFrage() throws Exception {
+		Raetsel r = erstelleRaetsel();
+
+		Zelle zelle = r.getZelle(1, 2);
+		assertEquals(1, zelle.getFragen().size());
+
 	}
 }

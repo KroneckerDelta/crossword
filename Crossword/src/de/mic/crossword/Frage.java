@@ -15,7 +15,7 @@ public class Frage {
 	}
 
 	/**
-	 * FÃ¼gt die Zellen hinzu, die fÃ¼r die LÃ¶sung sind
+	 * Fügt die Zellen hinzu, die für die LÃ¶sung sind
 	 * 
 	 * @param z1
 	 * @param z2
@@ -29,7 +29,13 @@ public class Frage {
 	}
 
 	public void addZellen(List<Zelle> zellen) {
-		zellen.stream().forEach(z -> loesungsZellen.add(z));
+
+		zellen.stream().forEach(z -> fuegeZurLoesungHinzu(z));
+	}
+
+	private void fuegeZurLoesungHinzu(Zelle z) {
+		loesungsZellen.add(z);
+		z.addFrage(this);
 	}
 
 	/**

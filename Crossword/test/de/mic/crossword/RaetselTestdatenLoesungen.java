@@ -1,5 +1,6 @@
 package de.mic.crossword;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -17,7 +18,12 @@ public class RaetselTestdatenLoesungen {
 
 	private Map<String, List<String>> loesungen = new HashMap<>();
 	KreuzwortraetselDotCom homepage = new KreuzwortraetselDotCom();
-	AntwortenService service = new AntwortenService(homepage);
+	AntwortenService service = new AntwortenService(homepage) {
+		@Override
+		public List<String> getAntworten(String frage) {
+			return new ArrayList<>();
+		}
+	};
 
 	/**
 	 
