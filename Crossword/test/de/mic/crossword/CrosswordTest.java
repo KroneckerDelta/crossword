@@ -1,12 +1,17 @@
 package de.mic.crossword;
 
+import static de.mic.crossword.Testfragen.ANZAHL_REIHEN;
+import static de.mic.crossword.Testfragen.ANZAHL_SPALTEN;
 import static de.mic.crossword.Testfragen.DIE_ACKERKRUME_LOCKERN;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 import java.util.List;
 
+import org.junit.Assert;
 import org.junit.Test;
 
 import de.mic.crossword.Raetsel.Richtung;
@@ -91,6 +96,54 @@ public class CrosswordTest {
 		Zelle zelle = r.getZelle(1, 3);
 		assertEquals(2, zelle.getFragen().size());
 
+	}
+
+	@Test
+	public void checkRaetsel() throws Exception {
+		Raetsel r = erstelleRaetsel();
+
+		checkRaetsel(r);
+	}
+
+	private void checkRaetsel(Raetsel r) {
+		Assert.assertEquals(169, r.getAlleZellen().size());
+
+		for (int y = 0; y < ANZAHL_REIHEN; y++) {
+			for (int x = 0; x < ANZAHL_SPALTEN; x++) {
+				assertNotNull(r.getZelle(x, y));
+			}
+		}
+
+		assertNotNull(r.getGewinnerfeld(1));
+		assertNotNull(r.getGewinnerfeld(2));
+		assertNotNull(r.getGewinnerfeld(3));
+		assertNotNull(r.getGewinnerfeld(4));
+		assertNotNull(r.getGewinnerfeld(5));
+		assertNotNull(r.getGewinnerfeld(6));
+		assertNotNull(r.getGewinnerfeld(7));
+		assertNotNull(r.getGewinnerfeld(8));
+		assertNotNull(r.getGewinnerfeld(9));
+		assertNull(r.getGewinnerfeld(10));
+
+		assertEquals(2,
+
+				r.getGewinnerfeld(1).getFragen().size());
+		assertEquals(2, r.getGewinnerfeld(2).getFragen().size());
+		assertEquals(2, r.getGewinnerfeld(3).getFragen().size());
+		assertEquals(2, r.getGewinnerfeld(4).getFragen().size());
+		assertEquals(2, r.getGewinnerfeld(5).getFragen().size());
+		assertEquals(2, r.getGewinnerfeld(6).getFragen().size());
+		assertEquals(2, r.getGewinnerfeld(7).getFragen().size());
+		assertEquals(2, r.getGewinnerfeld(8).getFragen().size());
+		assertEquals(2, r.getGewinnerfeld(9).getFragen().size());
+
+		// for (Zelle zelle : r.getFrageZellen()) {
+		// assertFalse(zelle.getFragen().isEmpty());
+		// for (Frage frage : zelle.getFragen()) {
+		// System.out.println("Antworten vorhanden: " +
+		// !frage.getMoeglicheAntworten().isEmpty());
+		// }
+		// }
 	}
 
 }

@@ -25,7 +25,6 @@ public class LoesungsService {
 		// for (Zelle erstesGewinnFeld : r.getGewinnerfelder()) {
 
 		Zelle erstesGewinnFeld = r.getGewinnerfeld(8);
-		Zelle erstesGewinnFeld1 = r.getGewinnerfeld(0);
 		Zelle erstesGewinnFeld2 = r.getGewinnerfeld(1);
 		Zelle erstesGewinnFeld3 = r.getGewinnerfeld(2);
 		Zelle erstesGewinnFeld4 = r.getGewinnerfeld(3);

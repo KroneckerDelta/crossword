@@ -32,14 +32,10 @@ import static de.mic.crossword.Testfragen.WEIBLICHES_BUEHNENFACH;
 import static de.mic.crossword.Testfragen.WESTAFRIKANER;
 import static de.mic.crossword.Testfragen.WIDERHALL;
 import static de.mic.crossword.Testfragen.WUERDIGEN_AUSZEICHNEN_UGS;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
 
 import java.awt.Point;
 import java.util.ArrayList;
 import java.util.List;
-
-import org.junit.Assert;
 
 import de.mic.crossword.Raetsel.Richtung;
 import webservice.AntwortenService;
@@ -85,8 +81,8 @@ public class TestRaetsel {
 		erstelleFrage(r, WUERDIGEN_AUSZEICHNEN_UGS, xy(0, 5), Richtung.WAAGERECHT, xy(0, 6), 5);
 		erstelleFrage(r, EIWEISSHALTIGE_NUTZPFLANZE, xy(0, 8), Richtung.WAAGERECHT, xy(0, 7), 4);
 		erstelleFrage(r, PAPSTKRONE, xy(0, 9), Richtung.WAAGERECHT, xy(1, 9), 5);
-		erstelleFrage(r, LAUTSTAERKEMASS, xy(0, 10), Richtung.WAAGERECHT, xy(0, 9), 4);
-		erstelleFrage(r, BALDRIANGEWAECHS, xy(0, 11), Richtung.WAAGERECHT, xy(1, 11), 5);
+		erstelleFrage(r, LAUTSTAERKEMASS, xy(0, 11), Richtung.WAAGERECHT, xy(0, 9), 4);
+		erstelleFrage(r, BALDRIANGEWAECHS, xy(0, 12), Richtung.WAAGERECHT, xy(1, 12), 5);
 
 		// zweite Reihe
 		erstelleFrage(r, AN_JEDEN_PLATZ_ORT, xy(1, 5), Richtung.SENKRECHT, xy(1, 6), 7);
@@ -122,7 +118,7 @@ public class TestRaetsel {
 		erstelleFrage(r, GEBIRGE_ZWISCHEN_EUROPA_UND_ASIEN, xy(10, 5), Richtung.SENKRECHT, xy(10, 6), 4);
 		erstelleFrage(r, REICH_AN_LICHT, xy(6, 9), Richtung.WAAGERECHT, xy(7, 9), 4);
 		// 6
-		erstelleFrage(r, BUCH_DES_ALTEN_TESTAMENTS, xy(7, 8), Richtung.SENKRECHT, xy(8, 9), 4);
+		erstelleFrage(r, BUCH_DES_ALTEN_TESTAMENTS, xy(7, 8), Richtung.SENKRECHT, xy(7, 9), 4);
 		// 5
 		erstelleFrage(r, FEINER_UNTERSCHIED_FEINHEIT, xy(5, 6), Richtung.SENKRECHT, xy(5, 7), 6);
 
@@ -205,32 +201,4 @@ public class TestRaetsel {
 
 	}
 
-	private void checkRaetsel(Raetsel r) {
-		Assert.assertEquals(169, r.getAlleZellen().size());
-
-		for (int y = 0; y < ANZAHL_REIHEN; y++) {
-			for (int x = 0; x < ANZAHL_SPALTEN; x++) {
-				assertNotNull(r.getZelle(x, y));
-			}
-		}
-
-		assertNotNull(r.getGewinnerfeld(1));
-		assertNotNull(r.getGewinnerfeld(2));
-		assertNotNull(r.getGewinnerfeld(3));
-		assertNotNull(r.getGewinnerfeld(4));
-		assertNotNull(r.getGewinnerfeld(5));
-		assertNotNull(r.getGewinnerfeld(6));
-		assertNotNull(r.getGewinnerfeld(7));
-		assertNotNull(r.getGewinnerfeld(8));
-		assertNotNull(r.getGewinnerfeld(9));
-		assertNull(r.getGewinnerfeld(10));
-
-		// for (Zelle zelle : r.getFrageZellen()) {
-		// assertFalse(zelle.getFragen().isEmpty());
-		// for (Frage frage : zelle.getFragen()) {
-		// System.out.println("Antworten vorhanden: " +
-		// !frage.getMoeglicheAntworten().isEmpty());
-		// }
-		// }
-	}
 }
