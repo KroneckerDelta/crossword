@@ -1,4 +1,4 @@
-package de.mic.crossword;
+package de.mic.crossword.testdaten;
 
 import java.util.Arrays;
 import java.util.HashMap;

@@ -2,6 +2,8 @@ package de.mic.crossword;
 
 import org.junit.Test;
 
+import de.mic.crossword.testdaten.TestRaetsel;
+
 public class KomplettTest {
 
 	/**

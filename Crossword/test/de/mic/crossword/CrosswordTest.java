@@ -1,8 +1,8 @@
 package de.mic.crossword;
 
-import static de.mic.crossword.Testfragen.ANZAHL_REIHEN;
-import static de.mic.crossword.Testfragen.ANZAHL_SPALTEN;
-import static de.mic.crossword.Testfragen.DIE_ACKERKRUME_LOCKERN;
+import static de.mic.crossword.testdaten.Testfragen.ANZAHL_REIHEN;
+import static de.mic.crossword.testdaten.Testfragen.ANZAHL_SPALTEN;
+import static de.mic.crossword.testdaten.Testfragen.DIE_ACKERKRUME_LOCKERN;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
@@ -15,6 +15,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import de.mic.crossword.Raetsel.Richtung;
+import de.mic.crossword.testdaten.TestRaetsel;
 
 public class CrosswordTest {
 

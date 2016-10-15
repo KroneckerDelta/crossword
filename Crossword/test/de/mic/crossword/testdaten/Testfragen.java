@@ -1,4 +1,4 @@
-package de.mic.crossword;
+package de.mic.crossword.testdaten;
 
 /**
  * Hier sind die Testfragen hinterlegt.

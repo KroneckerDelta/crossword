@@ -35,7 +35,7 @@ public class RaetselAntwortenService {
 	 * @param frage
 	 * @return
 	 */
-	protected List<String> getAntworten(String frage) {
+	public List<String> getAntworten(String frage) {
 		return Arrays.asList("");
 	}
 

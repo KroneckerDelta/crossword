@@ -1,43 +1,48 @@
-package de.mic.crossword;
+package de.mic.crossword.testdaten;
 
-import static de.mic.crossword.Testfragen.ALGERISCHE_STADT;
-import static de.mic.crossword.Testfragen.ANZAHL_REIHEN;
-import static de.mic.crossword.Testfragen.ANZAHL_SPALTEN;
-import static de.mic.crossword.Testfragen.AN_JEDEN_PLATZ_ORT;
-import static de.mic.crossword.Testfragen.AUSFUEHREN_VERRICHTEN;
-import static de.mic.crossword.Testfragen.BALDRIANGEWAECHS;
-import static de.mic.crossword.Testfragen.BIBL_STAMMVATER_ARCHE;
-import static de.mic.crossword.Testfragen.BUCH_DES_ALTEN_TESTAMENTS;
-import static de.mic.crossword.Testfragen.BUNDESSTAAT_DER_USA;
-import static de.mic.crossword.Testfragen.DIE_ACKERKRUME_LOCKERN;
-import static de.mic.crossword.Testfragen.DUESENFLUGZEUG;
-import static de.mic.crossword.Testfragen.EINWOHNER_DER_GRIECH_HAUPTSTADT;
-import static de.mic.crossword.Testfragen.EIWEISSHALTIGE_NUTZPFLANZE;
-import static de.mic.crossword.Testfragen.FEINER_UNTERSCHIED_FEINHEIT;
-import static de.mic.crossword.Testfragen.FRANZ_WEIBLICHER_ARTIKEL;
-import static de.mic.crossword.Testfragen.FREUNDLICH;
-import static de.mic.crossword.Testfragen.FRUEHERE_MUENZE;
-import static de.mic.crossword.Testfragen.GARTENGERAET_HARKE;
-import static de.mic.crossword.Testfragen.GEBIRGE_ZWISCHEN_EUROPA_UND_ASIEN;
-import static de.mic.crossword.Testfragen.HANDARBEITSTECHNIK;
-import static de.mic.crossword.Testfragen.KNOCHENGERUEST;
-import static de.mic.crossword.Testfragen.LAUTSTAERKEMASS;
-import static de.mic.crossword.Testfragen.PAPSTKRONE;
-import static de.mic.crossword.Testfragen.REGE_MUNTER;
-import static de.mic.crossword.Testfragen.REICH_AN_LICHT;
-import static de.mic.crossword.Testfragen.RUHMESBAU_BEI_REGENSBURG;
-import static de.mic.crossword.Testfragen.STADT_AN_DER_MURG;
-import static de.mic.crossword.Testfragen.VERMUTEN;
-import static de.mic.crossword.Testfragen.WEIBLICHES_BUEHNENFACH;
-import static de.mic.crossword.Testfragen.WESTAFRIKANER;
-import static de.mic.crossword.Testfragen.WIDERHALL;
-import static de.mic.crossword.Testfragen.WUERDIGEN_AUSZEICHNEN_UGS;
+import static de.mic.crossword.testdaten.Testfragen.ALGERISCHE_STADT;
+import static de.mic.crossword.testdaten.Testfragen.ANZAHL_REIHEN;
+import static de.mic.crossword.testdaten.Testfragen.ANZAHL_SPALTEN;
+import static de.mic.crossword.testdaten.Testfragen.AN_JEDEN_PLATZ_ORT;
+import static de.mic.crossword.testdaten.Testfragen.AUSFUEHREN_VERRICHTEN;
+import static de.mic.crossword.testdaten.Testfragen.BALDRIANGEWAECHS;
+import static de.mic.crossword.testdaten.Testfragen.BIBL_STAMMVATER_ARCHE;
+import static de.mic.crossword.testdaten.Testfragen.BUCH_DES_ALTEN_TESTAMENTS;
+import static de.mic.crossword.testdaten.Testfragen.BUNDESSTAAT_DER_USA;
+import static de.mic.crossword.testdaten.Testfragen.DIE_ACKERKRUME_LOCKERN;
+import static de.mic.crossword.testdaten.Testfragen.DUESENFLUGZEUG;
+import static de.mic.crossword.testdaten.Testfragen.EINWOHNER_DER_GRIECH_HAUPTSTADT;
+import static de.mic.crossword.testdaten.Testfragen.EIWEISSHALTIGE_NUTZPFLANZE;
+import static de.mic.crossword.testdaten.Testfragen.FEINER_UNTERSCHIED_FEINHEIT;
+import static de.mic.crossword.testdaten.Testfragen.FRANZ_WEIBLICHER_ARTIKEL;
+import static de.mic.crossword.testdaten.Testfragen.FREUNDLICH;
+import static de.mic.crossword.testdaten.Testfragen.FRUEHERE_MUENZE;
+import static de.mic.crossword.testdaten.Testfragen.GARTENGERAET_HARKE;
+import static de.mic.crossword.testdaten.Testfragen.GEBIRGE_ZWISCHEN_EUROPA_UND_ASIEN;
+import static de.mic.crossword.testdaten.Testfragen.HANDARBEITSTECHNIK;
+import static de.mic.crossword.testdaten.Testfragen.KNOCHENGERUEST;
+import static de.mic.crossword.testdaten.Testfragen.LAUTSTAERKEMASS;
+import static de.mic.crossword.testdaten.Testfragen.PAPSTKRONE;
+import static de.mic.crossword.testdaten.Testfragen.REGE_MUNTER;
+import static de.mic.crossword.testdaten.Testfragen.REICH_AN_LICHT;
+import static de.mic.crossword.testdaten.Testfragen.RUHMESBAU_BEI_REGENSBURG;
+import static de.mic.crossword.testdaten.Testfragen.STADT_AN_DER_MURG;
+import static de.mic.crossword.testdaten.Testfragen.VERMUTEN;
+import static de.mic.crossword.testdaten.Testfragen.WEIBLICHES_BUEHNENFACH;
+import static de.mic.crossword.testdaten.Testfragen.WESTAFRIKANER;
+import static de.mic.crossword.testdaten.Testfragen.WIDERHALL;
+import static de.mic.crossword.testdaten.Testfragen.WUERDIGEN_AUSZEICHNEN_UGS;
 
 import java.awt.Point;
 import java.util.ArrayList;
 import java.util.List;
 
+import de.mic.crossword.Frage;
+import de.mic.crossword.Raetsel;
 import de.mic.crossword.Raetsel.Richtung;
+import de.mic.crossword.RaetselAntwortenService;
+import de.mic.crossword.Zelle;
+import de.mic.crossword.Zelltyp;
 import webservice.AntwortenService;
 import webservice.webseite.KreuzwortraetselDotCom;
 
@@ -156,7 +161,7 @@ public class TestRaetsel {
 		RaetselAntwortenService s = new RaetselAntwortenService() {
 
 			@Override
-			protected List<String> getAntworten(String frage) {
+			public List<String> getAntworten(String frage) {
 
 				AntwortenService service = new AntwortenService(new KreuzwortraetselDotCom()) {
 					@Override
