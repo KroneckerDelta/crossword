@@ -18,6 +18,7 @@ public class Zelle {
 	private int stelle;
 	private List<Zelltyp> eigenschaften = new ArrayList<>();
 	private List<Frage> fragen = new ArrayList<>();
+	private String buchstabe;
 
 	public Zelle(Point position) {
 		this.position = position;
@@ -76,5 +77,49 @@ public class Zelle {
 	 */
 	public List<Frage> getFragen() {
 		return fragen;
+	}
+
+	/**
+	 * Liefert true, wenn schon ein Buchstabe gesetzt ist.
+	 * 
+	 * @return true, wenn es einen Buchstaben gibt.
+	 */
+	public boolean hatBuchstaben() {
+		return getBuchstabe() != null;
+	}
+
+	/**
+	 * Der Buchstabean diesemFeld
+	 * 
+	 * @return null oder Buchstabe
+	 */
+	public String getBuchstabe() {
+		return buchstabe;
+	}
+
+	/**
+	 * Setzt den Buchstaben
+	 * 
+	 * @param buchstabe
+	 */
+	public void setBuchstabe(String buchstabe) {
+		this.buchstabe = buchstabe;
+	}
+
+	@Override
+	public String toString() {
+		String result = "";
+		result += "Zelle: (" + position.x + "/" + position.y + ") Fragen: " + fragen;
+		return result;
+
+	}
+
+	/**
+	 * Liefert die Position zurück.
+	 * 
+	 * @return position
+	 */
+	public Point getPosition() {
+		return position;
 	}
 }

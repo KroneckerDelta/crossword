@@ -3,6 +3,7 @@ package de.mic.crossword;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Frage {
 
@@ -74,4 +75,25 @@ public class Frage {
 		this.antworten = antworten;
 	}
 
+	/**
+	 * Liefert die Antworten zurück, die die passende Länge haben.
+	 * 
+	 * @return Liste mit Antworten, kann leer sein.
+	 */
+	public List<String> getMoeglicheAntworten() {
+		List<String> result = new ArrayList<>();
+
+		if (antworten != null) {
+			return antworten.stream().filter(p -> p.length() == getAntwortLaenge()).collect(Collectors.toList());
+		}
+		return result;
+	}
+
+	@Override
+	public String toString() {
+
+		String result = "";
+		result += frage + " Antworten: " + antworten;
+		return result;
+	}
 }

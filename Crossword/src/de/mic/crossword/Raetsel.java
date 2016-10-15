@@ -2,6 +2,8 @@ package de.mic.crossword;
 
 import java.awt.Point;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -86,6 +88,15 @@ public class Raetsel {
 	}
 
 	/**
+	 * Liefert alle Felder mit Gewinnbuchstaben zurück.
+	 * 
+	 * @return Liste aller Felder mit Gewinnbuchstaben
+	 */
+	public List<Zelle> getGewinnerfelder() {
+		return alleZellen.stream().filter(p -> p.hatEigenschaft(Zelltyp.GEWINNFELD)).collect(Collectors.toList());
+	}
+
+	/**
 	 * Liefert an Anzahl der Zellen vom Startpunkt zur gwünshten Richtung
 	 * zurück.
 	 * 
@@ -139,4 +150,64 @@ public class Raetsel {
 		return alleZellen.stream().filter(z -> z.hatEigenschaft(typ)).collect(Collectors.toList());
 	}
 
+	/**
+	 * Liefert das Lösungswort zurück.
+	 * 
+	 * @return Lösungswort kann Lücken haben.
+	 */
+	public String getLoesungsWort() {
+		String result = "";
+		for (int i = 1; i <= getGewinnerfelder().size(); i++) {
+			Zelle gewinnerfeld = getGewinnerfeld(i);
+			if (gewinnerfeld.hatBuchstaben()) {
+				result += gewinnerfeld.getBuchstabe();
+			} else {
+				result += "_";
+			}
+		}
+
+		return result;
+	}
+
+	@Override
+	public String toString() {
+
+		StringBuffer sb = new StringBuffer();
+		List<Zelle> alle = getAlleZellen();
+		Collections.sort(alle, new Comparator<Zelle>() {
+
+			@Override
+			public int compare(Zelle o1, Zelle o2) {
+				if (o1.getPosition().y == o2.getPosition().y) {
+					return Integer.valueOf(o1.getPosition().x).compareTo(Integer.valueOf(o2.getPosition().x));
+				}
+
+				return Integer.valueOf(o1.getPosition().y).compareTo(Integer.valueOf(o2.getPosition().y));
+			}
+		});
+		int oldPosition = -1;
+		for (Zelle zelle : alle) {
+
+			// DerVesuch ASCII Grafik zu erzeugen...
+			if (oldPosition < zelle.getPosition().x) {
+				oldPosition = zelle.getPosition().x;
+			} else {
+				sb.append("\n");
+				oldPosition = -1;
+			}
+
+			if (zelle.hatEigenschaft(Zelltyp.FRAGE)) {
+				sb.append("#");
+			} else if (zelle.hatEigenschaft(Zelltyp.BUCHSTABE)) {
+				if (zelle.hatBuchstaben()) {
+					sb.append(zelle.getBuchstabe());
+				} else {
+					sb.append("_");
+
+				}
+			}
+		}
+
+		return sb.toString();
+	}
 }

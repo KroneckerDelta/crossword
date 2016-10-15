@@ -32,11 +32,8 @@ import static de.mic.crossword.Testfragen.WEIBLICHES_BUEHNENFACH;
 import static de.mic.crossword.Testfragen.WESTAFRIKANER;
 import static de.mic.crossword.Testfragen.WIDERHALL;
 import static de.mic.crossword.Testfragen.WUERDIGEN_AUSZEICHNEN_UGS;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
 
 import java.awt.Point;
 import java.util.ArrayList;
@@ -49,44 +46,26 @@ import de.mic.crossword.Raetsel.Richtung;
 import webservice.AntwortenService;
 import webservice.webseite.KreuzwortraetselDotCom;
 
-public class CrosswordTest {
+public class KomplettTest {
 
+	private RaetselTestdatenLoesungen raetselTestdatenLoesungen;
+
+	/**
+	 * Dieser Test erstellt das Rätsel aus dem Bilder-Ordner
+	 * 
+	 * @throws Exception
+	 */
 	@Test
-	public void checkZellenRueckgabeSenkrecht() throws Exception {
+	public void erstelleTestRaetsel() throws Exception {
+
 		Raetsel r = erstelleRaetsel();
 
-		List<Zelle> zellen = r.getZellen(2, Richtung.SENKRECHT, 2, 2);
-		Zelle z1 = zellen.get(0);
-		Zelle z2 = zellen.get(1);
-		assertTrue(z1.isPosition(2, 2));
-		assertTrue(z2.isPosition(2, 3));
-	}
+		checkRaetsel(r);
 
-	@Test
-	public void checkZellenRueckgabeWaagerecht() throws Exception {
-		Raetsel r = erstelleRaetsel();
+		String loesung = new LoesungsService().gewinnzellenLoesen(r);
+		System.out.println(r);
+		System.out.println("Lösung: " + loesung);
 
-		List<Zelle> zellen = r.getZellen(2, Richtung.WAAGERECHT, 2, 2);
-		Zelle z1 = zellen.get(0);
-		Zelle z2 = zellen.get(1);
-		assertTrue(z1.isPosition(2, 2));
-		assertTrue(z2.isPosition(3, 2));
-	}
-
-	@Test
-	public void checkAnzahlDerZellenRueckgabe() throws Exception {
-		Raetsel r = erstelleRaetsel();
-
-		List<Zelle> zellen = r.getZellen(2, Richtung.SENKRECHT, 2, 2);
-		assertEquals(2, zellen.size());
-	}
-
-	@Test
-	public void checkZellenRueckgabeIstNichtLeer() throws Exception {
-		Raetsel r = erstelleRaetsel();
-
-		List<Zelle> zellen = r.getZellen(2, Richtung.SENKRECHT, 2, 2);
-		assertFalse(zellen.isEmpty());
 	}
 
 	private Raetsel erstelleRaetsel() {
@@ -179,7 +158,6 @@ public class CrosswordTest {
 
 	private List<String> getAntworten(Frage f) {
 		RaetselAntwortenService s = new RaetselAntwortenService() {
-			private RaetselTestdatenLoesungen raetselTestdatenLoesungen;
 
 			@Override
 			protected List<String> getAntworten(String frage) {
@@ -267,50 +245,13 @@ public class CrosswordTest {
 	private void erstelleFrageProReihe(int x, Raetsel r, int... alleY) {
 
 		for (int y : alleY) {
-			r.getZelle(x, y).addEigenschaft(Zelltyp.FRAGE);
+			r.getZelle(x, y).addEigenschaft(Zelltyp.BUCHSTABE);
 		}
 
 	}
 
 	private static Point xy(int x, int y) {
 		return new Point(x, y);
-	}
-
-	@Test
-	public void zelleHatFrageMitAckerkrumeLockern() throws Exception {
-		Raetsel r = erstelleRaetsel();
-
-		Zelle zelle = r.getZelle(1, 2);
-		Frage frage = zelle.getFragen().get(0);
-		String text = frage.getFrage();
-		assertEquals(DIE_ACKERKRUME_LOCKERN, text);
-	}
-
-	@Test
-	public void zelleHatFragen() throws Exception {
-		Raetsel r = erstelleRaetsel();
-
-		Zelle zelle = r.getZelle(1, 2);
-		assertFalse(zelle.getFragen().isEmpty());
-
-	}
-
-	@Test
-	public void zelleHatNurEineFrage() throws Exception {
-		Raetsel r = erstelleRaetsel();
-
-		Zelle zelle = r.getZelle(1, 2);
-		assertEquals(1, zelle.getFragen().size());
-
-	}
-
-	@Test
-	public void zelleHatZweiFragen() throws Exception {
-		Raetsel r = erstelleRaetsel();
-
-		Zelle zelle = r.getZelle(1, 3);
-		assertEquals(2, zelle.getFragen().size());
-
 	}
 
 }
