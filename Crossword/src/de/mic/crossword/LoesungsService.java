@@ -22,45 +22,55 @@ public class LoesungsService {
 		System.out.println("Beginne Lösung zu suchen");
 		System.out.println(
 				"###################################################################################################");
-		for (Zelle erstesGewinnFeld : r.getGewinnerfelder()) {
+		// for (Zelle erstesGewinnFeld : r.getGewinnerfelder()) {
 
-			List<Frage> fragen = erstesGewinnFeld.getFragen();
-			for (Frage frageGewinnerFeld : fragen) {
-				List<Zelle> zellen = frageGewinnerFeld.getZellen();
-				// int stelleGewinnerFeld = zellen.indexOf(erstesGewinnFeld);
-				String loesungsWortTemplate = "";
-				for (int stelle = 0; stelle < zellen.size(); stelle++) {
+		Zelle erstesGewinnFeld = r.getGewinnerfeld(8);
+		Zelle erstesGewinnFeld1 = r.getGewinnerfeld(0);
+		Zelle erstesGewinnFeld2 = r.getGewinnerfeld(1);
+		Zelle erstesGewinnFeld3 = r.getGewinnerfeld(2);
+		Zelle erstesGewinnFeld4 = r.getGewinnerfeld(3);
+		Zelle erstesGewinnFeld5 = r.getGewinnerfeld(4);
+		Zelle erstesGewinnFeld6 = r.getGewinnerfeld(5);
+		Zelle erstesGewinnFeld7 = r.getGewinnerfeld(6);
+		Zelle erstesGewinnFeld8 = r.getGewinnerfeld(7);
 
-					Zelle z = zellen.get(stelle);
-					if (z.hatBuchstaben()) {
-						loesungsWortTemplate += z.getBuchstabe();
-					} else {
-						loesungsWortTemplate += ".";
-					}
-				}
-				final String moeglicheLoesung = loesungsWortTemplate;
-				List<String> antwortenGewinnerFeld = frageGewinnerFeld.getMoeglicheAntworten();
-				List<String> antworten = antwortenGewinnerFeld.stream().filter(p -> p.matches(moeglicheLoesung))
-						.collect(Collectors.toList());
-				System.out.println("Frage: " + frageGewinnerFeld);
-				System.out.println("Für Feld: " + erstesGewinnFeld);
-				if (antworten.size() == 1) {
-					System.out.println("Setze Wort: " + antworten.get(0));
-					setzeAntwort(zellen, antworten.get(0));
-				} else if (antworten.size() > 1) {
-					machwas();
-					System.out.println(
-							"###################################################################################################");
-					System.out.println("MehrereAntworten!");
-					System.out.println(
-							"###################################################################################################");
+		List<Frage> fragen = erstesGewinnFeld.getFragen();
+		for (Frage frageGewinnerFeld : fragen) {
+			List<Zelle> zellen = frageGewinnerFeld.getZellen();
+			// int stelleGewinnerFeld = zellen.indexOf(erstesGewinnFeld);
+			String loesungsWortTemplate = "";
+			for (int stelle = 0; stelle < zellen.size(); stelle++) {
+
+				Zelle z = zellen.get(stelle);
+				if (z.hatBuchstaben()) {
+					loesungsWortTemplate += z.getBuchstabe();
 				} else {
-
-					System.out.println("Keine Antwort gefunden.");
+					loesungsWortTemplate += ".";
 				}
-
 			}
+			final String moeglicheLoesung = loesungsWortTemplate;
+			List<String> antwortenGewinnerFeld = frageGewinnerFeld.getMoeglicheAntworten();
+			List<String> antworten = antwortenGewinnerFeld.stream().filter(p -> p.matches(moeglicheLoesung))
+					.collect(Collectors.toList());
+			System.out.println("Frage: " + frageGewinnerFeld);
+			System.out.println("Für Feld: " + erstesGewinnFeld);
+			if (antworten.size() == 1) {
+				System.out.println("Setze Wort: " + antworten.get(0));
+				setzeAntwort(zellen, antworten.get(0));
+			} else if (antworten.size() > 1) {
+				machwas();
+				System.out.println(
+						"###################################################################################################");
+				System.out.println("MehrereAntworten!");
+				System.out.println(
+						"###################################################################################################");
+			} else {
+
+				System.out.println("Keine Antwort gefunden.");
+			}
+
 		}
+		// }
 
 		return r.getLoesungsWort();
 	}

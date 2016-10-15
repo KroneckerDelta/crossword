@@ -109,7 +109,8 @@ public class Zelle {
 	@Override
 	public String toString() {
 		String result = "";
-		result += "Zelle: (" + position.x + "/" + position.y + ") Fragen: " + fragen;
+		String buchstabe = hatBuchstaben() ? getBuchstabe() : "_";
+		result += "Zelle: " + buchstabe + " (" + position.x + "/" + position.y + ") Fragen: " + fragen;
 		return result;
 
 	}

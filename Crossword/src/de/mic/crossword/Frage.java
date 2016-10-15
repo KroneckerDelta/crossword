@@ -16,7 +16,7 @@ public class Frage {
 	}
 
 	/**
-	 * Fügt die Zellen hinzu, die für die LÃ¶sung sind
+	 * Fügt die Zellen hinzu, die für die Lösung sind
 	 * 
 	 * @param z1
 	 * @param z2
