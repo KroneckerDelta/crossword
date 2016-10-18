@@ -11,10 +11,17 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 
 public class ImageService {
 
-	private BufferedImage makeGrey(BufferedImage colorImage) {
+	/**
+	 * Macht aus dem Bild ein graues Bild.
+	 * 
+	 * @param colorImage
+	 * @return graues Bild zurück.
+	 */
+	public BufferedImage makeGrey(BufferedImage colorImage) {
 		BufferedImage grayImage = new BufferedImage(colorImage.getWidth(), colorImage.getHeight(),
 				BufferedImage.TYPE_BYTE_GRAY);
 		Graphics g = grayImage.getGraphics();
@@ -24,7 +31,7 @@ public class ImageService {
 		return grayImage;
 	}
 
-	public Image loadImage() {
+	public BufferedImage loadImage() {
 		URL resource = ImageService.class.getResource("/bilder/1.png");
 		BufferedImage read = null;
 		try {
@@ -34,7 +41,7 @@ public class ImageService {
 			e.printStackTrace();
 		}
 
-		return makeGrey(read);
+		return read;
 
 	}
 
@@ -62,10 +69,23 @@ public class ImageService {
 		JFrame f = new JFrame();
 		JPanel p = new JPanel();
 
-		ImageIcon icon = new ImageIcon(imageService.loadImage());
+		BufferedImage loadImage = imageService.loadImage();
+		BufferedImage grey = imageService.makeGrey(loadImage);
+		Image corner = new EckenFinderService().getCornerImage(loadImage);
+
+		ImageIcon icon = new ImageIcon(loadImage);
+		ImageIcon greyIcon = new ImageIcon(grey);
+		ImageIcon cornerIcon = new ImageIcon(corner);
+
 		JButton jButton = new JButton(icon);
+		JButton jButton2 = new JButton(greyIcon);
+		JButton jButton3 = new JButton(cornerIcon);
+
 		p.add(jButton);
-		f.setContentPane(p);
+		p.add(jButton2);
+		p.add(jButton3);
+		JScrollPane jScrollPane = new JScrollPane(p);
+		f.setContentPane(jScrollPane);
 		f.pack();
 		f.setVisible(true);
 
