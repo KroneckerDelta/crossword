@@ -22,23 +22,16 @@ public class LoesungsService {
 		System.out.println("Beginne Lösung zu suchen");
 		System.out.println(
 				"###################################################################################################");
-		for (Zelle erstesGewinnFeld : r.getGewinnerfelder()) {
+		for (Zelle erstesGewinnFeld : r.getAlleZellen()) {
+
+			// Zelle erstesGewinnFeld = r.getGewinnerfeld(9);
 
 			List<Frage> fragen = erstesGewinnFeld.getFragen();
 			for (Frage frageGewinnerFeld : fragen) {
 				List<Zelle> zellen = frageGewinnerFeld.getZellen();
 				// int stelleGewinnerFeld = zellen.indexOf(erstesGewinnFeld);
-				String loesungsWortTemplate = "";
-				for (int stelle = 0; stelle < zellen.size(); stelle++) {
 
-					Zelle z = zellen.get(stelle);
-					if (z.hatBuchstaben()) {
-						loesungsWortTemplate += z.getBuchstabe();
-					} else {
-						loesungsWortTemplate += ".";
-					}
-				}
-				final String moeglicheLoesung = loesungsWortTemplate;
+				final String moeglicheLoesung = erstelleTemplate(zellen);
 				List<String> antwortenGewinnerFeld = frageGewinnerFeld.getMoeglicheAntworten();
 				List<String> antworten = antwortenGewinnerFeld.stream().filter(p -> p.matches(moeglicheLoesung))
 						.collect(Collectors.toList());
@@ -63,6 +56,20 @@ public class LoesungsService {
 		}
 
 		return r.getLoesungsWort();
+	}
+
+	private String erstelleTemplate(List<Zelle> zellen) {
+		String loesungsWortTemplate = "";
+		for (int stelle = 0; stelle < zellen.size(); stelle++) {
+
+			Zelle z = zellen.get(stelle);
+			if (z.hatBuchstaben()) {
+				loesungsWortTemplate += z.getBuchstabe();
+			} else {
+				loesungsWortTemplate += ".";
+			}
+		}
+		return loesungsWortTemplate;
 	}
 
 	private void machwas() {
