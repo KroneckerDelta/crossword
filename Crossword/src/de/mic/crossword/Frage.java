@@ -82,9 +82,11 @@ public class Frage {
 	 */
 	public List<String> getMoeglicheAntworten() {
 		List<String> result = new ArrayList<>();
-
+		// filter die Antworten, die von der Länge her passen. Liefert sie
+		// UPPER-CASE zurück.
 		if (antworten != null) {
-			return antworten.stream().filter(p -> p.length() == getAntwortLaenge()).collect(Collectors.toList());
+			return antworten.stream().filter(p -> p.trim().length() == getAntwortLaenge())
+					.map(word -> word.trim().toUpperCase()).collect(Collectors.toList());
 		}
 		return result;
 	}

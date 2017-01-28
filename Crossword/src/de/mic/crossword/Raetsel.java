@@ -210,4 +210,13 @@ public class Raetsel {
 
 		return sb.toString();
 	}
+
+	/**
+	 * Zeigt das ganze Rätsel
+	 * 
+	 * @return Darstellung des Rätsels
+	 */
+	public String show() {
+		return toString();
+	}
 }

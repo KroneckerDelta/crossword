@@ -1,5 +1,6 @@
 package de.mic.crossword;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -22,25 +23,69 @@ public class LoesungsService {
 		System.out.println("Beginne Lösung zu suchen");
 		System.out.println(
 				"###################################################################################################");
-		for (Zelle erstesGewinnFeld : r.getAlleZellen()) {
 
-			// Zelle erstesGewinnFeld = r.getGewinnerfeld(9);
+		List<Zelle> mehrereAntworten = new ArrayList<>();
+		List<Zelle> keineAntwort = new ArrayList<>();
+		List<Zelle> alleZellen = r.getAlleZellen();
+		fillLists(mehrereAntworten, keineAntwort, alleZellen);
 
-			List<Frage> fragen = erstesGewinnFeld.getFragen();
-			for (Frage frageGewinnerFeld : fragen) {
-				List<Zelle> zellen = frageGewinnerFeld.getZellen();
-				// int stelleGewinnerFeld = zellen.indexOf(erstesGewinnFeld);
+		logFehler(mehrereAntworten, keineAntwort);
 
-				final String moeglicheLoesung = erstelleTemplate(zellen);
-				List<String> antwortenGewinnerFeld = frageGewinnerFeld.getMoeglicheAntworten();
-				List<String> antworten = antwortenGewinnerFeld.stream().filter(p -> p.matches(moeglicheLoesung))
-						.collect(Collectors.toList());
-				System.out.println("Frage: " + frageGewinnerFeld);
-				System.out.println("Für Feld: " + erstesGewinnFeld);
+		boolean abbruch = false;
+		int zaehler = 0;
+		while (!abbruch && !keineAntwort.isEmpty() && !mehrereAntworten.isEmpty()) {
+			keineAntwort.clear();
+			mehrereAntworten.clear();
+			fillLists(mehrereAntworten, keineAntwort, alleZellen);
+			logFehler(mehrereAntworten, keineAntwort);
+			zaehler++;
+			if (zaehler > 3) {
+				abbruch = true;
+			}
+		}
+
+		return r.getLoesungsWort();
+	}
+
+	private void logFehler(List<Zelle> mehrereAntworten, List<Zelle> keineAntwort) {
+		System.out.println("Anzahl mehrerer Antworten und keiner Antworten (" + mehrereAntworten.size() + "/"
+				+ keineAntwort.size() + ")");
+	}
+
+	private void fillLists(List<Zelle> meherereAntworten, List<Zelle> keineAntwort, List<Zelle> alleZellen) {
+		for (Zelle zelle : alleZellen) {
+
+			findAntwortProZelle(meherereAntworten, keineAntwort, zelle);
+		}
+	}
+
+	private void findAntwortProZelle(List<Zelle> meherereAntworten, List<Zelle> keineAntwort, Zelle zelle) {
+		// Zelle erstesGewinnFeld = r.getGewinnerfeld(9);
+
+		List<Frage> fragen = zelle.getFragen();
+		for (Frage zellFragen : fragen) {
+			if (!zelle.hatBuchstaben()) {
+
+				List<Zelle> zellen = zellFragen.getZellen();
+				// int stelleGewinnerFeld =
+				// zellen.indexOf(erstesGewinnFeld);
+
+				List<String> antworten = findeAntworten(zellen, zellFragen);
+
+				logAntworten(zelle, zellFragen, antworten);
+
 				if (antworten.size() == 1) {
+					System.out.println(
+							"###################################################################################################");
+
 					System.out.println("Setze Wort: " + antworten.get(0));
+					System.out.println(
+							"###################################################################################################");
+
 					setzeAntwort(zellen, antworten.get(0));
 				} else if (antworten.size() > 1) {
+
+					meherereAntworten.add(zelle);
 					machwas();
 					System.out.println(
 							"###################################################################################################");
@@ -49,13 +94,29 @@ public class LoesungsService {
 							"###################################################################################################");
 				} else {
 
+					keineAntwort.add(zelle);
 					System.out.println("Keine Antwort gefunden.");
 				}
-
 			}
-		}
 
-		return r.getLoesungsWort();
+		}
+	}
+
+	private void logAntworten(Zelle zelle, Frage zellFragen, List<String> antworten) {
+		System.out.println("Übrig gebliebene Antworten: " + antworten);
+		System.out.println("Frage: " + zellFragen.getFrage());
+		System.out.println("Für Feld: " + zelle.getPosition());
+	}
+
+	private List<String> findeAntworten(final List<Zelle> zellen, Frage zellFragen) {
+
+		final String loesungsTemplate = erstelleTemplate(zellen);
+
+		List<String> antwortenGewinnerFeld = zellFragen.getMoeglicheAntworten();
+
+		System.out.println("mögliche Antworten: " + antwortenGewinnerFeld);
+
+		return antwortenGewinnerFeld.stream().filter(p -> p.matches(loesungsTemplate)).collect(Collectors.toList());
 	}
 
 	private String erstelleTemplate(List<Zelle> zellen) {
@@ -69,6 +130,7 @@ public class LoesungsService {
 				loesungsWortTemplate += ".";
 			}
 		}
+		System.out.println("Lösungstemplate: " + loesungsWortTemplate);
 		return loesungsWortTemplate;
 	}
 

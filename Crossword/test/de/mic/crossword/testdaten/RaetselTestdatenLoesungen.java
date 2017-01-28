@@ -31,10 +31,10 @@ public class RaetselTestdatenLoesungen {
 
 	private void checkDaten() {
 		System.out.println("Frage/Antworten: " + loesungen);
-		System.out.println("Fehler beim Zugriff: " + service.getFehlerhafteFragen().size());
-		System.out.println(service.getFehlerhafteFragen());
-		System.out.println("Kein Ergebnis: " + service.getKeinErgebnis().size());
-		System.out.println(service.getKeinErgebnis());
+		System.out.println("Anzahl Fehler beim Zugriff: " + service.getFehlerhafteFragen().size());
+		System.out.println("Fehlerhafte Fragen: " + service.getFehlerhafteFragen());
+		System.out.println("Anzahl Fragen ohne Ergebnis: " + service.getKeinErgebnis().size());
+		System.out.println("Fragen ohne Ergebnis: "+ service.getKeinErgebnis());
 
 	}
 

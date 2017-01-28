@@ -59,7 +59,7 @@ public class TestRaetsel {
 		}
 		r.addAll(alleZellen);
 		// Fragen hinzufügen
-		erstelleDieFragen(r);
+		fuegeAntwortZellenEigenschaftHinzu(r);
 
 		erstelleDieGewinnerZellen(r);
 
@@ -141,20 +141,20 @@ public class TestRaetsel {
 		return new Point(x, y);
 	}
 
-	private void erstelleDieFragen(Raetsel r) {
-		erstelleFrageProReihe(0, r, 0, 2, 4, 5, 7, 9, 11, 12);
-		erstelleFrageProReihe(1, r, 0, 8);
-		erstelleFrageProReihe(2, r, 0, 2, 5, 11);
-		erstelleFrageProReihe(3, r, 6, 8);
-		erstelleFrageProReihe(4, r, 0, 5);
-		erstelleFrageProReihe(5, r, 0, 1, 2, 10);
-		erstelleFrageProReihe(6, r, 5, 8);
-		erstelleFrageProReihe(7, r, 4, 9, 12);
-		erstelleFrageProReihe(8, r, 0, 2, 3, 7, 8);
-		erstelleFrageProReihe(9, r, 0, 6, 11);
-		erstelleFrageProReihe(10, r, 4, 10);
-		erstelleFrageProReihe(11, r, 0, 3, 8);
-		erstelleFrageProReihe(12, r, 0, 6);
+	private void fuegeAntwortZellenEigenschaftHinzu(Raetsel r) {
+		erstelleZelleFuerAntwortenProReihe(0, r, 0, 2, 4, 5, 7, 9, 11, 12);
+		erstelleZelleFuerAntwortenProReihe(1, r, 0, 8);
+		erstelleZelleFuerAntwortenProReihe(2, r, 0, 2, 5, 11);
+		erstelleZelleFuerAntwortenProReihe(3, r, 6, 8);
+		erstelleZelleFuerAntwortenProReihe(4, r, 0, 5);
+		erstelleZelleFuerAntwortenProReihe(5, r, 0, 1, 2, 10);
+		erstelleZelleFuerAntwortenProReihe(6, r, 5, 8);
+		erstelleZelleFuerAntwortenProReihe(7, r, 4, 9, 12);
+		erstelleZelleFuerAntwortenProReihe(8, r, 0, 2, 3, 7, 8);
+		erstelleZelleFuerAntwortenProReihe(9, r, 0, 6, 11);
+		erstelleZelleFuerAntwortenProReihe(10, r, 4, 10);
+		erstelleZelleFuerAntwortenProReihe(11, r, 0, 3, 8);
+		erstelleZelleFuerAntwortenProReihe(12, r, 0, 6);
 	}
 
 	private List<String> getAntworten(Frage f) {
@@ -198,10 +198,10 @@ public class TestRaetsel {
 
 	}
 
-	private void erstelleFrageProReihe(int x, Raetsel r, int... alleY) {
+	private void erstelleZelleFuerAntwortenProReihe(int reihe, Raetsel r, int... alleY) {
 
 		for (int y : alleY) {
-			r.getZelle(x, y).addEigenschaft(Zelltyp.BUCHSTABE);
+			r.getZelle(reihe, y).addEigenschaft(Zelltyp.BUCHSTABE);
 		}
 
 	}

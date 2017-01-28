@@ -93,7 +93,7 @@ public class AntwortenService {
 		return result;
 	}
 
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args)  {
 
 		String u1 = "http://www.kreuzwort.net/fragen/gartenger%C3%A4t.htm";
 		String u2 = "https://www.xwords.de/quest/gartenger%C3%A4t";
@@ -107,16 +107,42 @@ public class AntwortenService {
 		String u5 = "http://www.kreuzwort-raetsel.com/f/die-ackerkrume-lockern";
 
 		System.out.println(u1);
-		traversier(open(u1));
+		try {
+			traversier(open(u1));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		System.out.println(u2);
-		traversier(open(u2));
+		System.out.println(u2);
+		try {
+			traversier(open(u2));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		System.out.println(u3);
-		traversier(open(u3));
+		try {
+			traversier(open(u3));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		System.out.println(u4);
-		traversier(open(u4));
+		try {
+			traversier(open(u4));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 		System.out.println(u5);
-		traversier(open(u5));
+		try {
+			traversier(open(u5));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 		System.out.println("##################################################################");
 
