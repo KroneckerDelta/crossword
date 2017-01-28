@@ -25,7 +25,8 @@ public class LoesungsService {
 		List<Zelle> mehrereAntworten = new ArrayList<>();
 		List<Zelle> keineAntwort = new ArrayList<>();
 		List<Zelle> alleZellen = r.getAlleZellen();
-		fillLists(mehrereAntworten, keineAntwort, alleZellen);
+
+		loeseRaetsel(mehrereAntworten, keineAntwort, alleZellen);
 
 		logFehler(mehrereAntworten, keineAntwort);
 
@@ -34,7 +35,7 @@ public class LoesungsService {
 		while (!abbruch && !keineAntwort.isEmpty() && !mehrereAntworten.isEmpty()) {
 			keineAntwort.clear();
 			mehrereAntworten.clear();
-			fillLists(mehrereAntworten, keineAntwort, alleZellen);
+			loeseRaetsel(mehrereAntworten, keineAntwort, alleZellen);
 			logFehler(mehrereAntworten, keineAntwort);
 			zaehler++;
 			if (zaehler > 3) {
@@ -49,7 +50,7 @@ public class LoesungsService {
 		System.out.println("Anzahl mehrerer Antworten und keiner Antworten (" + mehrereAntworten.size() + "/" + keineAntwort.size() + ")");
 	}
 
-	private void fillLists(List<Zelle> meherereAntworten, List<Zelle> keineAntwort, List<Zelle> alleZellen) {
+	private void loeseRaetsel(List<Zelle> meherereAntworten, List<Zelle> keineAntwort, List<Zelle> alleZellen) {
 		for (Zelle zelle : alleZellen) {
 
 			findAntwortProZelle(meherereAntworten, keineAntwort, zelle);

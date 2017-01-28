@@ -113,7 +113,7 @@ public class TestRaetsel {
 		erstelleFrage(r, FRUEHERE_MUENZE, xy(5, 2), Richtung.WAAGERECHT, xy(6, 2), 5);
 		erstelleFrage(r, ALGERISCHE_STADT, xy(10, 0), Richtung.SENKRECHT, xy(10, 1), 4);
 		// 7
-		erstelleFrage(r, EINWOHNER_DER_GRIECH_HAUPTSTADT, xy(5, 4), Richtung.WAAGERECHT, xy(5, 4), 7);
+		erstelleFrage(r, EINWOHNER_DER_GRIECH_HAUPTSTADT, xy(5, 4), Richtung.WAAGERECHT, xy(6, 4), 7);
 		erstelleFrage(r, STADT_AN_DER_MURG, xy(7, 0), Richtung.SENKRECHT, xy(7, 1), 7);
 		// 1
 		erstelleFrage(r, KNOCHENGERUEST, xy(8, 0), Richtung.SENKRECHT, xy(9, 0), 7);
@@ -181,19 +181,19 @@ public class TestRaetsel {
 	}
 
 	private void erstelleDieGewinnerZellen(Raetsel r) {
-		erstelleGewinnerZelle(r, 1, 6, 8);
-		erstelleGewinnerZelle(r, 2, 10, 9);
-		erstelleGewinnerZelle(r, 4, 7, 7);
-		erstelleGewinnerZelle(r, 5, 9, 1);
-		erstelleGewinnerZelle(r, 7, 1, 2);
-		erstelleGewinnerZelle(r, 8, 6, 3);
-		erstelleGewinnerZelle(r, 9, 10, 4);
-		erstelleGewinnerZelle(r, 10, 7, 6);
-		erstelleGewinnerZelle(r, 12, 5, 5);
+		erstelleGewinnerZelle(r, 1, 9, 5);
+		erstelleGewinnerZelle(r, 2, 1, 7);
+		erstelleGewinnerZelle(r, 3, 6, 8);
+		erstelleGewinnerZelle(r, 4, 10, 9);
+		erstelleGewinnerZelle(r, 5, 5, 12);
+		erstelleGewinnerZelle(r, 6, 7, 10);
+		erstelleGewinnerZelle(r, 7, 7, 4);
+		erstelleGewinnerZelle(r, 8, 6, 1);
+		erstelleGewinnerZelle(r, 9, 10, 2);
 
 	}
 
-	private void erstelleGewinnerZelle(Raetsel r, int y, int x, int stelle) {
+	private void erstelleGewinnerZelle(Raetsel r, int stelle, int x, int y) {
 		r.getZelle(x, y).addGewinnfeld(stelle);
 
 	}
