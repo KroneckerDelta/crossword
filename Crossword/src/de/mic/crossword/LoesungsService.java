@@ -17,12 +17,10 @@ public class LoesungsService {
 	 * 
 	 * @param r
 	 */
-	public String gewinnzellenLoesen(Raetsel r) {
-		System.out.println(
-				"###################################################################################################");
+	public Raetsel gewinnzellenLoesen(Raetsel r) {
+		System.out.println("###################################################################################################");
 		System.out.println("Beginne Lösung zu suchen");
-		System.out.println(
-				"###################################################################################################");
+		System.out.println("###################################################################################################");
 
 		List<Zelle> mehrereAntworten = new ArrayList<>();
 		List<Zelle> keineAntwort = new ArrayList<>();
@@ -44,12 +42,11 @@ public class LoesungsService {
 			}
 		}
 
-		return r.getLoesungsWort();
+		return r;
 	}
 
 	private void logFehler(List<Zelle> mehrereAntworten, List<Zelle> keineAntwort) {
-		System.out.println("Anzahl mehrerer Antworten und keiner Antworten (" + mehrereAntworten.size() + "/"
-				+ keineAntwort.size() + ")");
+		System.out.println("Anzahl mehrerer Antworten und keiner Antworten (" + mehrereAntworten.size() + "/" + keineAntwort.size() + ")");
 	}
 
 	private void fillLists(List<Zelle> meherereAntworten, List<Zelle> keineAntwort, List<Zelle> alleZellen) {
@@ -75,23 +72,18 @@ public class LoesungsService {
 				logAntworten(zelle, zellFragen, antworten);
 
 				if (antworten.size() == 1) {
-					System.out.println(
-							"###################################################################################################");
+					System.out.println("###################################################################################################");
 
 					System.out.println("Setze Wort: " + antworten.get(0));
-					System.out.println(
-							"###################################################################################################");
+					System.out.println("###################################################################################################");
 
 					setzeAntwort(zellen, antworten.get(0));
 				} else if (antworten.size() > 1) {
 
 					meherereAntworten.add(zelle);
-					machwas();
-					System.out.println(
-							"###################################################################################################");
+					System.out.println("###################################################################################################");
 					System.out.println("MehrereAntworten!");
-					System.out.println(
-							"###################################################################################################");
+					System.out.println("###################################################################################################");
 				} else {
 
 					keineAntwort.add(zelle);
@@ -132,11 +124,6 @@ public class LoesungsService {
 		}
 		System.out.println("Lösungstemplate: " + loesungsWortTemplate);
 		return loesungsWortTemplate;
-	}
-
-	private void machwas() {
-		// TODO Auto-generated method stub
-
 	}
 
 	private void setzeAntwort(List<Zelle> zellen, String loesung) {

@@ -16,9 +16,9 @@ public class KomplettTest {
 
 		Raetsel r = erstelleRaetsel();
 
-		String loesung = new LoesungsService().gewinnzellenLoesen(r);
-		System.out.println(r);
-		System.out.println("Lösung: " + loesung);
+		Raetsel loesung = new LoesungsService().gewinnzellenLoesen(r);
+		System.out.println(r.getLoesungsWort());
+		System.out.println("Lösung: \n" + loesung);
 
 	}
 
