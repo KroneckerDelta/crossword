@@ -50,11 +50,11 @@ public class EckenFinderService {
 		moravec.setAttribute("threshold", 50000);
 
 		// 1. Figures
-		MarvinImage imageIn = MarvinImageIO.loadImage("./Crossword/bilder/1.png");
+		MarvinImage imageIn = MarvinImageIO.loadImage("bilder/1.png");
 		MarvinAttributes attr = new MarvinAttributes();
 		moravec.process(imageIn, null, attr);
 		imageIn = showCorners(imageIn, attr, 6);
-		MarvinImageIO.saveImage(imageIn, "./Crossword/bilder/2.png");
+		MarvinImageIO.saveImage(imageIn, "bilder/2.png");
 		//
 		// // 2. Face
 		// moravec.setAttribute("threshold", 2000);
